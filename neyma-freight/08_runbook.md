@@ -69,9 +69,9 @@ Recommended fields:
 | Prospects Sent | Number | Counter |
 | Estimated Campaign Tokens | Number | Expected total token use |
 | Actual Campaign Tokens | Number | Sum of actual tokens when available |
-| Eval Pass Count | Number | Number of prospects passing eval |
-| Eval Needs Review Count | Number | Number of prospects parked for review |
-| Eval Fail Count | Number | Number of prospects failing eval |
+| Gate Pass Count | Number | Rows where all three gates pass |
+| Gate Review Count | Number | Rows with at least one REVIEW |
+| Gate Fail Count | Number | Rows with at least one FAIL |
 | Cost Notes | Text | Cost assumptions and anomalies |
 | Notes | Text | Run log and blockers |
 
@@ -116,16 +116,11 @@ Recommended fields:
 | Next Touch Date | Date | Next planned touch |
 | Reply Type | Select | positive, referral, objection, not interested, bounce, no reply |
 | Learning Notes | Text | Golden-set learnings and reply analysis |
-| Discovery Eval Score | Number | 1-5 account discovery quality |
-| Signal Eval Score | Number | 1-5 evidence and pain-signal quality |
-| Buying Committee Eval Score | Number | 1-5 person mapping quality |
-| Qualification Eval Score | Number | 1-5 tiering and reasoning quality |
-| Outreach Eval Score | Number | 1-5 draft quality |
-| Deliverability Eval Score | Number | 1-5 send-safety quality |
-| Overall Eval Score | Number | Lowest critical-path score or overall QA judgment |
-| Eval Status | Select | PASS, FAIL, NEEDS_REVIEW |
-| Eval Failure Reason | Text | Specific reason when not PASS |
-| Eval Notes | Text | QA notes and improvement ideas |
+| Signal Gate | Select | PASS, REVIEW, FAIL |
+| Person Gate | Select | PASS, REVIEW, FAIL |
+| Message Gate | Select | PASS, REVIEW, FAIL |
+| Booking Priority | Select | HIGH, MEDIUM, LOW |
+| Gate Notes | Text | Short reason for any REVIEW/FAIL or priority choice |
 | Estimated Tokens | Number | Expected token usage for the row |
 | Last Run Tokens | Number | Actual token usage when available |
 | Tool Calls Used | Number | Count of tool calls when available |
@@ -133,7 +128,6 @@ Recommended fields:
 | Risk Flags | Multi-select | Quality, deliverability, LinkedIn, or cost risks |
 | Recovery Action | Text | What to do next when a row is parked |
 | Next Best Action | Text | Single next operator or agent action |
-| Booking Likelihood Score | Number | 1-5 likelihood of a useful reply or workflow-audit call |
 | Booking Hypothesis | Text | Why this person may care now |
 | Call CTA | Text | Exact CTA used in outreach |
 | Meeting Outcome | Select | booked, interested, referred, not now, no show, unqualified, lost |
@@ -199,20 +193,20 @@ Approval values:
 
 1. Discovery
    - Use `02_discovery.md`.
-   - Use `13_agent_evals.md` to score discovery quality.
+   - Use `13_agent_evals.md` to apply the Signal Gate when evidence is found.
    - Add candidates to Notion.
    - Set `State` to `NEW`, `SOURCING`, or `SOURCED`.
 
 2. Research
    - Use `03_research.md`.
-   - Use `13_agent_evals.md` to score signal and buying-committee quality.
+   - Use `13_agent_evals.md` to apply Signal Gate and Person Gate.
    - Prioritize company website, quote/contact pages, careers pages, LinkedIn, search results.
    - Capture Signal A and Signal B evidence.
    - For A-tier candidates, map at least two buying-committee contacts when possible.
 
 3. Qualification
    - Use `04_qualification.md`.
-   - Use `13_agent_evals.md` to score tiering and qualification quality.
+   - Use `13_agent_evals.md` to decide whether the row can advance, needs review, or should stop.
    - Use `14_edge_cases.md` to route ambiguity, duplicates, weak evidence, and safety issues.
    - Score 0-10.
    - Set `Account Tier` to `A`, `B`, or `C`.
@@ -220,8 +214,8 @@ Approval values:
 
 4. Outreach Drafting
    - Use `05_outreach.md`.
-   - Use `13_agent_evals.md` to score outreach and deliverability quality.
-   - Use `15_call_booking_self_eval.md` to score whether the account is likely to produce a booked workflow audit.
+   - Use `13_agent_evals.md` to apply Message Gate and Booking Priority.
+   - Use `15_call_booking_self_eval.md` to decide `Booking Priority`.
    - Draft only for qualified prospects with evidence.
    - Complete `Account POV` and `Workflow Audit Angle`.
    - Set `State` to `PENDING_APPROVAL`.
@@ -263,10 +257,10 @@ Approval values:
 - Every hook must be grounded in Signal A or Signal B.
 - Every A-tier account must include a buying-committee map or a note explaining why a second person could not be found.
 - `Decision Maker LinkedIn URL`, `Person 1 LinkedIn URL`, and `Person 2 LinkedIn URL` must be direct person profile URLs, not company pages.
-- Every agent step must write relevant eval scores, `Eval Status`, and `Eval Notes`.
-- A low critical-path eval score should route to `NEEDS_REVIEW`, `DISQUALIFIED`, or C-tier before drafting or sending.
+- Each send-ready row must have `Signal Gate`, `Person Gate`, and `Message Gate`.
+- Any gate with `REVIEW` or `FAIL` should route to `NEEDS_REVIEW`, `DISQUALIFIED`, C-tier, or an enrichment action before drafting or sending.
 - Every edge case should write `Edge Case Type`, `Risk Flags`, `Recovery Action`, and `Next Best Action`.
-- A-tier sends should normally have `Booking Likelihood Score` of 4 or higher.
+- A-tier sends should normally have `Booking Priority` of `HIGH`.
 - Each send-ready row should include a `Booking Hypothesis` and exact `Call CTA`.
 - Token usage should be estimated per row and logged when actual token counts are available.
 - The CTA should ask for a 5-minute workflow audit unless the operator explicitly requests another conversion goal.
@@ -283,7 +277,7 @@ v0 is successful when:
 - Every qualified prospect has evidence.
 - Every draft has a specific hook.
 - Every A-tier prospect has an `Account POV`, `Workflow Audit Angle`, and buying-committee mapping.
-- Every drafted prospect has an eval pass or a clear `NEEDS_REVIEW` reason.
+- Every drafted prospect passes the three gates or has a clear `NEEDS_REVIEW` reason.
 - Every A-tier send has a booking hypothesis, CTA, and next best action.
 - Operator can review, approve, reject, or hold rows in Notion.
 - No message is sent without an explicit operator send command.
@@ -298,10 +292,14 @@ Create these views if useful:
 - `A-Tier ABM`: `Account Tier` is `A`
 - `Needs Buying Committee`: `Account Tier` is `A` and `Person 2 LinkedIn URL` is empty
 - `Workflow Audit Queue`: `Workflow Audit Angle` is not empty
-- `Eval Review`: `Eval Status` is `NEEDS_REVIEW`
-- `Eval Failures`: `Eval Status` is `FAIL`
+- `Gate Review`: `Signal Gate` is `REVIEW`
+- `Person Gate Review`: `Person Gate` is `REVIEW`
+- `Message Gate Review`: `Message Gate` is `REVIEW`
+- `Gate Failures`: `Signal Gate` is `FAIL`
+- `Person Gate Failures`: `Person Gate` is `FAIL`
+- `Message Gate Failures`: `Message Gate` is `FAIL`
 - `Edge Cases`: `Edge Case Type` is not empty
-- `Booking Priority`: `Booking Likelihood Score` is 4 or higher
+- `High Priority Touches`: `Booking Priority` is `HIGH`
 - `This Week Touches`: `Next Touch Date` is not empty
 - `Reply Learning`: `Reply Type` is not empty
 - `Approval Queue`: `State` is `PENDING_APPROVAL`

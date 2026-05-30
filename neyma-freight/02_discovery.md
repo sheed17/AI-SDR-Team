@@ -111,11 +111,10 @@ Add a candidate only if there is a plausible path to finding:
 
 Do not pad the list to hit the target count. A smaller clean list is better than a noisy one.
 
-Before advancing a candidate, apply the Discovery Eval in `13_agent_evals.md` and write:
+Before advancing a candidate, apply the Signal Gate in `13_agent_evals.md` when evidence is found and write:
 
-- `Discovery Eval Score`
-- `Eval Status`
-- `Eval Notes`
+- `Signal Gate`
+- `Gate Notes`
 - `Estimated Tokens`
 
 ## Output

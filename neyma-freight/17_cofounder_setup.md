@@ -60,7 +60,7 @@ He should understand the key files:
 - `10_goal_to_result.md`: campaign worker contract
 - `11_worker_checklist.md`: what Codex follows during a run
 - `12_enterprise_gtm.md`: account-first GTM model
-- `13_agent_evals.md`: evals and token usage
+- `13_agent_evals.md`: three-gate eval and optional token usage
 - `14_edge_cases.md`: edge-case routing
 - `15_call_booking_self_eval.md`: booked-call optimization
 - `16_cofounder_handoff.md`: optional operator queue workflow
@@ -133,7 +133,7 @@ Use Apollo only when:
 - public email is missing
 - email enrichment becomes the bottleneck
 
-Apollo should not determine account quality. Account quality comes from ICP, evidence, person fit, and booking likelihood.
+Apollo should not determine account quality. Account quality comes from ICP, evidence, person fit, and booking priority.
 
 ### Google Drive
 
@@ -166,7 +166,7 @@ Test prompt:
 
 Use a small test before trusting a full run:
 
-`Run Neyma Freight research for 3 customs brokers in [region]. Use the playbooks, update Notion, map decision-makers, write LinkedIn/email drafts only when evidence is real, score booking likelihood, and stop at PENDING_APPROVAL. Do not send anything.`
+`Run Neyma Freight research for 3 customs brokers in [region]. Use the playbooks, update Notion, map decision-makers, write LinkedIn/email drafts only when evidence is real, set the three gates and booking priority, and stop at PENDING_APPROVAL. Do not send anything.`
 
 Success looks like:
 
@@ -174,7 +174,7 @@ Success looks like:
 - evidence URL captured for qualified rows
 - direct decision-maker LinkedIn URL found when possible
 - account tier assigned
-- booking likelihood scored
+- booking priority set
 - edge cases noted
 - LinkedIn opener drafted
 - email draft written only when evidence is real
@@ -184,7 +184,7 @@ Success looks like:
 
 Once setup is verified:
 
-`Run Neyma Freight campaign for 10 freight forwarders/customs brokers in [region]. Prioritize A-tier accounts with manual-document evidence and a timing trigger. Map 2 decision-makers where possible, update Notion, draft email and LinkedIn outreach, score evals and booking likelihood, and stop at PENDING_APPROVAL. Do not send anything.`
+`Run Neyma Freight campaign for 10 freight forwarders/customs brokers in [region]. Prioritize A-tier accounts with manual-document evidence and a timing trigger. Map 2 decision-makers where possible, update Notion, draft email and LinkedIn outreach, set the three gates and booking priority, and stop at PENDING_APPROVAL. Do not send anything.`
 
 ## Human Role
 

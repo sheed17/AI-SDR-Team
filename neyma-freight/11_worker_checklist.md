@@ -42,13 +42,13 @@ For each campaign:
 4. Research each row.
 5. Map the buying committee for A-tier candidates.
 6. Qualify each row and assign `Account Tier`.
-7. Run relevant evals and write eval scores/status.
+7. Apply the three gates: `Signal Gate`, `Person Gate`, and `Message Gate`.
 8. Route edge cases with `Edge Case Type`, `Risk Flags`, `Recovery Action`, and `Next Best Action`.
 9. Write `Account POV` and `Workflow Audit Angle`.
 10. Draft outreach for qualified A-tier or strong B-tier rows only.
-11. Run outreach, deliverability, and booked-call evals.
+11. Run Message Gate and set `Booking Priority`.
 12. Stop each drafted row at `PENDING_APPROVAL`.
-13. Update campaign counters, token estimates, and eval counts.
+13. Update campaign counters, token estimates, and gate counts.
 14. If the operator command includes sending, validate and send eligible emails.
 15. Summarize result.
 
@@ -74,7 +74,7 @@ Research is complete only when:
 - A-tier candidates have at least two buying-committee people searched for.
 - Evidence URL and quote are captured if a signal exists.
 - `Account POV` and `Workflow Audit Angle` are captured for A-tier and send-ready B-tier rows.
-- `Discovery Eval Score`, `Signal Eval Score`, and `Buying Committee Eval Score` are captured where relevant.
+- `Signal Gate` and `Person Gate` are captured.
 - Any messy condition is captured using `14_edge_cases.md`.
 
 ## Qualification Acceptance
@@ -86,7 +86,7 @@ Qualify only when:
 - Signal A or Signal B is real.
 - Draft hook can cite evidence.
 - `Account Tier` is `A` or `B`.
-- `Qualification Eval Score` is 4 or higher for A-tier and at least 3 for B-tier.
+- `Signal Gate` and `Person Gate` are not `FAIL`.
 
 Otherwise:
 
@@ -107,9 +107,8 @@ Every draft must include:
 - `Account POV`
 - `Workflow Audit Angle`
 - Persona-aware copy for founder, ops, brokerage, import/export, or documentation
-- `Outreach Eval Score` of 4 or higher, or a clear reason for `NEEDS_EDIT`
-- `Deliverability Eval Score` of 4 or higher before any operator-commanded send
-- `Booking Likelihood Score` of 4 or higher for A-tier sends
+- `Message Gate` is `PASS`, or there is a clear reason for `NEEDS_EDIT`
+- `Booking Priority` is `HIGH` for A-tier sends
 - `Booking Hypothesis`
 - Exact `Call CTA`
 
@@ -118,29 +117,32 @@ Then set:
 - `State`: `PENDING_APPROVAL`
 - `Approval Status`: `PENDING`
 - `Sequence Step`: `Not started`
-- `Eval Status`: `PASS`, unless the row needs human QA
+- `Signal Gate`: `PASS`
+- `Person Gate`: `PASS`
+- `Message Gate`: `PASS`
+- `Booking Priority`: `HIGH` or `MEDIUM`
 - `Next Best Action`: review, send, enrich person, improve evidence, or hold
 
-## Eval Routing
+## Gate Routing
 
 After each agent step, apply `13_agent_evals.md`:
 
-- If `Signal Eval Score` is below 3, do not draft.
-- If `Buying Committee Eval Score` is below 3 for an A-tier candidate, downgrade to B/C or route to `NEEDS_REVIEW`.
-- If `Outreach Eval Score` is below 4, route to `NEEDS_EDIT` or `NEEDS_REVIEW`.
-- If `Deliverability Eval Score` is below 4, do not send.
-- If `Eval Status` is `FAIL`, route to `DISQUALIFIED` or C-tier.
-- If `Eval Status` is `NEEDS_REVIEW`, park the row and explain why in `Eval Failure Reason`.
+- If `Signal Gate` is `FAIL`, do not draft.
+- If `Signal Gate` is `REVIEW`, enrich or park in `NEEDS_REVIEW`.
+- If `Person Gate` is `FAIL`, do not send.
+- If `Person Gate` is `REVIEW`, enrich, downgrade from A-tier, or use a general inbox intentionally.
+- If `Message Gate` is `FAIL`, do not send.
+- If `Message Gate` is `REVIEW`, rewrite before handoff/send.
 - If an edge case is detected, write `Edge Case Type`, `Risk Flags`, `Recovery Action`, and `Next Best Action`.
 
 ## Booked-Call Routing
 
 Apply `15_call_booking_self_eval.md` before sending:
 
-- If `Booking Likelihood Score` is 4-5, prioritize the row.
-- If `Booking Likelihood Score` is 3, enrich trigger, person, proof, or CTA before sending.
-- If `Booking Likelihood Score` is 1-2, hold or C-tier the row.
-- If the account has no timing trigger, keep the row but lower booking likelihood unless the evidence is unusually strong.
+- If `Booking Priority` is `HIGH`, prioritize the row.
+- If `Booking Priority` is `MEDIUM`, enrich trigger, person, proof, or CTA before sending.
+- If `Booking Priority` is `LOW`, hold or C-tier the row.
+- If the account has no timing trigger, keep the row but lower `Booking Priority` unless the evidence is unusually strong.
 - If the CTA is a demo request, rewrite it as a 5-minute workflow-audit ask.
 
 ## Token Logging
@@ -155,7 +157,7 @@ When actual usage is available, write:
 
 - `Last Run Tokens`
 - `Tool Calls Used`
-- `Eval Notes` with any expensive or unusual research path
+- `Gate Notes` with any expensive or unusual research path
 
 ## Do Not Do
 
@@ -174,9 +176,8 @@ Before sending a drafted campaign email, verify:
 - The row has a real Signal A or Signal B evidence URL.
 - The row is `Account Tier` A or strong B.
 - The row has `Workflow Audit Angle`.
-- The row has `Eval Status` of `PASS`.
-- The row has `Deliverability Eval Score` of 4 or higher.
-- The row has `Booking Likelihood Score` of 4 or higher for A-tier.
+- The row has `Signal Gate`, `Person Gate`, and `Message Gate` of `PASS`.
+- The row has `Booking Priority` of `HIGH` for A-tier.
 - The row has a concrete `Booking Hypothesis` and `Call CTA`.
 - The row is not rejected, held, disqualified, needs review, errored, or already sent.
 
@@ -195,8 +196,8 @@ Report:
 
 - What campaign ran
 - How many prospects reached each terminal/parked state
-- How many prospects passed eval, failed eval, or need review
-- How many A-tier rows have booking likelihood 4+
+- How many prospects passed all gates, failed a gate, or need review
+- How many A-tier rows are `Booking Priority = HIGH`
 - Top edge cases blocking sends
 - Estimated campaign tokens and actual campaign tokens if available
 - Link to the review/send queue

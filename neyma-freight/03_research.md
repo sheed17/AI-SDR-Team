@@ -228,13 +228,11 @@ Use 3-5 concise sentences:
 
 ## Stop Conditions
 
-Before setting a final research state, apply the Signal Eval and Buying Committee Eval in `13_agent_evals.md` and write:
+Before setting a final research state, apply the Signal Gate and Person Gate in `13_agent_evals.md` and write:
 
-- `Signal Eval Score`
-- `Buying Committee Eval Score`
-- `Eval Status`
-- `Eval Failure Reason` when not passing
-- `Eval Notes`
+- `Signal Gate`
+- `Person Gate`
+- `Gate Notes`
 - `Estimated Tokens`
 - `Tool Calls Used` when available
 

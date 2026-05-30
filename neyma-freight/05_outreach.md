@@ -180,18 +180,15 @@ Breakup:
 
 ## After Drafting
 
-Before setting the row to `PENDING_APPROVAL`, apply the Outreach Eval and Deliverability Eval in `13_agent_evals.md` and write:
+Before setting the row to `PENDING_APPROVAL`, apply the Message Gate in `13_agent_evals.md` and write:
 
-- `Outreach Eval Score`
-- `Deliverability Eval Score`
-- `Overall Eval Score`
-- `Eval Status`
-- `Eval Failure Reason` when not passing
-- `Eval Notes`
+- `Message Gate`
+- `Booking Priority`
+- `Gate Notes`
 
 Then apply the booked-call eval in `15_call_booking_self_eval.md` and write:
 
-- `Booking Likelihood Score`
+- `Booking Priority`
 - `Booking Hypothesis`
 - `Call CTA`
 - `Next Best Action`
@@ -208,12 +205,9 @@ Update Notion:
 - `Workflow Audit Angle`
 - `Sequence Step`
 - `Next Touch Date` when a touch is scheduled
-- `Outreach Eval Score`
-- `Deliverability Eval Score`
-- `Overall Eval Score`
-- `Eval Status`
-- `Eval Notes`
-- `Booking Likelihood Score`
+- `Message Gate`
+- `Booking Priority`
+- `Gate Notes`
 - `Booking Hypothesis`
 - `Call CTA`
 - `Next Best Action`

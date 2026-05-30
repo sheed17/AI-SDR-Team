@@ -85,13 +85,12 @@ Use `Disqualifier` when relevant:
 
 ## State Transitions
 
-Before advancing state, apply the Qualification Eval in `13_agent_evals.md` and write:
+Before advancing state, apply the daily gates in `13_agent_evals.md` and write:
 
-- `Qualification Eval Score`
-- `Overall Eval Score`
-- `Eval Status`
-- `Eval Failure Reason` when not passing
-- `Eval Notes`
+- `Signal Gate`
+- `Person Gate`
+- `Gate Notes`
+- `Booking Priority`
 
 After research:
 

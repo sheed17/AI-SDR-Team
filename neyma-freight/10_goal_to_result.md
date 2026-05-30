@@ -88,11 +88,13 @@ For enterprise-style runs, a row is not truly ready unless it also has:
 - `Buying Committee` for A-tier accounts
 - `Account POV`
 - `Workflow Audit Angle`
-- `Eval Status`
-- `Overall Eval Score`
+- `Signal Gate`
+- `Person Gate`
+- `Message Gate`
+- `Booking Priority`
+- `Gate Notes`
 - `Estimated Tokens`
 - `Edge Case Type` when messy
-- `Booking Likelihood Score`
 - `Booking Hypothesis`
 - `Call CTA`
 
@@ -134,10 +136,11 @@ During outreach, write:
 
 After each step, apply `13_agent_evals.md` and write:
 
-- Relevant eval scores
-- `Eval Status`
-- `Eval Failure Reason` when not passing
-- `Eval Notes`
+- `Signal Gate`
+- `Person Gate`
+- `Message Gate`
+- `Booking Priority`
+- `Gate Notes`
 - `Estimated Tokens`
 - `Last Run Tokens` when available
 - `Tool Calls Used` when available
@@ -151,7 +154,7 @@ When messy inputs appear, apply `14_edge_cases.md` and write:
 
 Before a row becomes send-ready, apply `15_call_booking_self_eval.md` and write:
 
-- `Booking Likelihood Score`
+- `Booking Priority`
 - `Booking Hypothesis`
 - `Call CTA`
 - `Next Best Action`
@@ -183,9 +186,8 @@ Email sending is a separate operator-commanded action:
 - The row must have a credible email address.
 - The row must have an evidence-backed draft and evidence URL.
 - The row must have a `Workflow Audit Angle`.
-- The row must have `Eval Status` of `PASS`.
-- The row must have `Deliverability Eval Score` of 4 or higher.
-- A-tier rows should have `Booking Likelihood Score` of 4 or higher.
+- The row must have `Signal Gate`, `Person Gate`, and `Message Gate` of `PASS`.
+- A-tier rows should have `Booking Priority` of `HIGH`.
 - The row must have a concrete `Booking Hypothesis` and `Call CTA`.
 - The row must not be `REJECTED`, `HOLD`, `DISQUALIFIED`, `NEEDS_REVIEW`, `ERROR`, or `SENT`.
 - Codex updates successfully sent rows to `SENT`.
@@ -205,9 +207,9 @@ At the end of a campaign run, report:
 - Number A-tier
 - Number B-tier
 - Number with two mapped people
-- Number eval-pass
-- Number eval-fail
-- Number eval-needs-review
+- Number with all gates passed
+- Number with gate failures
+- Number needing gate review
 - Number booking-priority rows
 - Top edge cases
 - Estimated campaign tokens

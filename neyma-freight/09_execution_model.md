@@ -80,10 +80,10 @@ For a prospect in state `S`:
 3. The handler runs one agentic step using available tools.
 4. The handler returns structured output only.
 5. Orchestrator validates output.
-6. Orchestrator applies the eval rules in `13_agent_evals.md`.
-7. If valid and eval passes, write output to Notion and advance state.
+6. Orchestrator applies the three gates in `13_agent_evals.md`.
+7. If valid and required gates pass, write output to Notion and advance state.
 8. If invalid, retry once with a repair prompt.
-9. If still invalid or eval fails, route to `NEEDS_REVIEW`, `DISQUALIFIED`, or C-tier.
+9. If still invalid or a required gate fails, route to `NEEDS_REVIEW`, `DISQUALIFIED`, or C-tier.
 10. Log the run in `Notes` or a separate run log.
 
 The DB/Notion row is the handoff. Agents never pass directly to each other.
@@ -115,7 +115,7 @@ These decisions belong to the orchestrator or operator, not the LLM:
 - Which handler runs for a state.
 - State transitions.
 - Output validation.
-- Eval validation and routing.
+- Gate validation and routing.
 - Retry and repair.
 - Routing to `NEEDS_REVIEW`.
 - Approval gate.
@@ -219,8 +219,11 @@ Log each step with:
 - Ending state
 - Handler
 - Tool surfaces used
-- Eval scores
-- Eval status
+- Signal Gate
+- Person Gate
+- Message Gate
+- Booking Priority
+- Gate Notes
 - Estimated tokens
 - Actual tokens when available
 - Tool call count when available
@@ -247,22 +250,22 @@ while run_is_active:
     handler = registry[prospect.state]
     context = assemble_context(prospect, handler.playbook)
     result = handler.run(context)
-    eval_result = evaluate(result, prospect, "13_agent_evals.md")
-    if validate(result) and eval_result.status == PASS:
+    gate_result = apply_gates(result, prospect, "13_agent_evals.md")
+    if validate(result) and required_gates_pass(gate_result):
       write_result_to_notion(prospect, result)
-      write_eval_to_notion(prospect, eval_result)
+      write_gates_to_notion(prospect, gate_result)
       advance_state(prospect, result.next_state)
       log_run(prospect, result)
     else:
-      repaired = retry_once(handler, context, validation_or_eval_error)
-      repaired_eval = evaluate(repaired, prospect, "13_agent_evals.md")
-      if validate(repaired) and repaired_eval.status == PASS:
+      repaired = retry_once(handler, context, validation_or_gate_error)
+      repaired_gates = apply_gates(repaired, prospect, "13_agent_evals.md")
+      if validate(repaired) and required_gates_pass(repaired_gates):
         write_result_to_notion(prospect, repaired)
-        write_eval_to_notion(prospect, repaired_eval)
+        write_gates_to_notion(prospect, repaired_gates)
         advance_state(prospect, repaired.next_state)
         log_run(prospect, repaired)
       else:
-        route_to_needs_review_or_disqualified(prospect, validation_or_eval_error)
+        route_to_needs_review_or_disqualified(prospect, validation_or_gate_error)
 
   update_campaign_counters()
   mark_done_when_campaign_has_no_actionable_rows()

@@ -62,7 +62,7 @@ Add these fields to `Neyma Freight Pipeline`:
 A row is handoff-ready only when:
 
 - `Account Tier` is A or strong B.
-- `Booking Likelihood Score` is 4 or higher for A-tier.
+- `Booking Priority` is `HIGH` for A-tier.
 - `Person 1 LinkedIn URL` is a direct `/in/...` URL or a clear reason is written.
 - Evidence URL and evidence quote/job title exist.
 - `Account POV` is complete.

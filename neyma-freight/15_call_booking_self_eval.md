@@ -20,23 +20,21 @@ Add these fields to `Neyma Freight Pipeline`:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| Booking Likelihood Score | Number | 1-5 likelihood of getting a useful reply or workflow-audit call |
+| Booking Priority | Select | HIGH, MEDIUM, LOW |
 | Booking Hypothesis | Text | Why this person may care now |
 | Call CTA | Text | Exact CTA used in outreach |
 | Meeting Outcome | Select | booked, interested, referred, not now, no show, unqualified, lost |
 | Objection Category | Select | Main objection if one appears |
 
-## Booking Likelihood Score
+## Booking Priority
 
 Use:
 
-- `5`: Strong account, strong signal, right person, good timing, sharp workflow audit angle.
-- `4`: Good shot; one minor weakness.
-- `3`: Possible, but likely needs better person or stronger trigger.
-- `2`: Low chance; hold or enrich.
-- `1`: Do not send.
+- `HIGH`: Strong account, strong signal, right person, good timing, sharp workflow audit angle.
+- `MEDIUM`: Possible, but likely needs better person, stronger trigger, or proof.
+- `LOW`: Low chance; hold, enrich later, or C-tier.
 
-An A-tier send should normally have `Booking Likelihood Score` of 4 or 5.
+An A-tier send should normally have `Booking Priority = HIGH`.
 
 ## What Drives Booked Calls
 
@@ -59,7 +57,7 @@ Neyma already handles 1, 2, and 4 reasonably. The biggest improvement opportunit
 - Buying committee mapping exists for A-tier accounts.
 - LinkedIn person URLs are separated from company URLs.
 - Drafts are short and tied to a workflow audit.
-- Eval and edge-case routing prevent obvious bad sends.
+- Gate and edge-case routing prevent obvious bad sends.
 - Notion gives the operator a clear control surface.
 
 ### Weaknesses
@@ -89,7 +87,7 @@ Timing signals:
 - recent LinkedIn posts about growth, new services, bottlenecks, compliance, or hiring
 - company page activity suggesting operational change
 
-If no timing signal exists, the account can still be good, but the booking likelihood should be lower.
+If no timing signal exists, the account can still be good, but `Booking Priority` should usually be lower.
 
 ### 2. Build a Micro-Proof Asset
 
@@ -166,7 +164,7 @@ Booked-call learning should be more important than sent-email learning.
 
 ### 7. Add a Pre-Send Call Booking Eval
 
-Before sending, score:
+Before sending, decide:
 
 - Does the evidence show a real workflow?
 - Is this the best person?
@@ -181,7 +179,7 @@ If the answer is weak, enrich before sending.
 
 Before a row is sent, check:
 
-- `Booking Likelihood Score` is 4 or higher for A-tier.
+- `Booking Priority` is `HIGH` for A-tier.
 - `Booking Hypothesis` explains why this person may care now.
 - `Call CTA` is exactly stated.
 - Account has Signal A or Signal B evidence.
@@ -258,7 +256,7 @@ Why not higher:
 What makes it potentially top-tier:
 
 - It is already account-first.
-- It separates evidence, person mapping, draft quality, deliverability, and booking likelihood.
+- It separates evidence, person mapping, draft quality, deliverability, and booking priority.
 - It has a way to learn from each row.
 - It keeps LinkedIn manual and low-risk.
 - It can become extremely good if the first 20-50 accounts are treated as a learning lab, not a volume campaign.

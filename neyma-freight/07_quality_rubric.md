@@ -6,7 +6,7 @@ Use this rubric before moving a prospect to `PENDING_APPROVAL`.
 
 The bar is evidence-backed relevance, not volume.
 
-For score definitions, per-agent evals, and token logging, use `13_agent_evals.md`.
+For the daily three-gate eval and optional token logging, use `13_agent_evals.md`.
 
 ## Pass Criteria
 
@@ -22,8 +22,8 @@ A prospect is ready for approval only if all are true:
 - Decision-maker discovery was attempted with LinkedIn/search.
 - Decision-maker confidence is captured in notes when not obvious.
 - A-tier accounts have a buying-committee map with two people when findable.
-- Relevant eval scores are captured and `Eval Status` is `PASS`.
-- `Overall Eval Score` is 4 or higher for A-tier and at least 3 for strong B-tier.
+- `Signal Gate`, `Person Gate`, and `Message Gate` are `PASS`.
+- `Booking Priority` is `HIGH` for A-tier sends.
 - Outreach hook references the actual signal.
 - Email is concise and calm.
 - No send action has been taken.
@@ -42,8 +42,7 @@ Fail the prospect when any are true:
 - A-tier account has no account POV.
 - A-tier account has only one person and no notes explaining why another person could not be found.
 - LinkedIn person fields contain company pages or generic search URLs.
-- `Eval Status` is `FAIL`.
-- A critical-path eval score is below 3.
+- Any gate is `FAIL`.
 
 ## Draft Review Checklist
 
@@ -59,8 +58,8 @@ Before setting `State` to `PENDING_APPROVAL`, check:
 - If the draft says `Hi team`, does the row explain that no strong named decision-maker was found?
 - Does `Workflow Audit Angle` name a specific process, such as POA, ISF, invoice, packing list, email/fax intake, or entry prep?
 - Does `Primary Persona` match the message angle?
-- Is `Outreach Eval Score` 4 or higher?
-- Is `Deliverability Eval Score` 4 or higher if the message may be sent?
+- Is `Message Gate` `PASS`?
+- Is `Booking Priority` `HIGH` for A-tier, or intentionally `MEDIUM` for a lighter B-tier?
 - Are there no unsupported claims about savings, staffing, or volume?
 
 ## Account Tier Decision
@@ -73,10 +72,10 @@ Use:
 
 Do not send C-tier accounts.
 
-Eval guardrails:
+Gate guardrails:
 
-- A-tier should have `Overall Eval Score` of 4 or higher.
-- B-tier should have `Overall Eval Score` of at least 3 and no critical-path failure.
+- A-tier should have all three gates at `PASS` and `Booking Priority = HIGH`.
+- B-tier should have no gate at `FAIL`.
 - C-tier can have useful learning notes, but should not receive outreach.
 
 ## State Decision
@@ -87,11 +86,11 @@ Use:
 - `NEEDS_REVIEW` when evidence or fit is ambiguous.
 - `DISQUALIFIED` when evidence is absent or company is outside ICP.
 
-Eval routing:
+Gate routing:
 
-- `PASS`: continue to the next state.
-- `NEEDS_REVIEW`: park the row with `Eval Failure Reason`.
-- `FAIL`: disqualify or downgrade to C-tier.
+- All gates `PASS`: continue to the next state.
+- Any gate `REVIEW`: park, enrich, or downgrade with `Gate Notes`.
+- Any gate `FAIL`: disqualify, hold, or downgrade to C-tier.
 
 ## Golden Set Notes
 

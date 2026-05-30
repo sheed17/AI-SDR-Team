@@ -165,7 +165,7 @@ Set:
 
 - `Reply Type`: `bounce`
 - `Edge Case Type`: `Bounce`
-- `Deliverability Eval Score`: 1 or 2
+- `Message Gate`: `REVIEW` or `FAIL` for any future send until a verified address exists
 - `Next Best Action`: find verified email or alternate contact
 
 ## Token-Burn Edge Cases
@@ -207,7 +207,7 @@ Stop and set:
 
 Do not send when:
 
-- `Deliverability Eval Score` is below 4.
+- `Signal Gate`, `Person Gate`, or `Message Gate` is not `PASS`.
 - Email is guessed or unverified.
 - Evidence URL is missing.
 - Account is C-tier.

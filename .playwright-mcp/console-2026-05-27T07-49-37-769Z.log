@@ -1,0 +1,110 @@
+[      83ms] [INFO] Resource Sentinel initialized... @ https://www.notion.so/36d73457d9d081359fd9dd19e2e2ebba:0
+[     378ms] [INFO] 2026-05-27T07:49:38.146Z [info] PageLoader: loserAborted {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[     404ms] [INFO] 2026-05-27T07:49:38.172Z [info] FeatureFlagTransactionQueue: preferIndexedDB {team: no-team-specified} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[     472ms] [INFO] 2026-05-27T07:49:38.240Z [info] appHelpers: shouldShowError {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[     478ms] [INFO] 2026-05-27T07:49:38.246Z [info] appHelpers: shouldShowError {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[     493ms] [LOG] %c
+	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+	nnnn                         nnnn
+	nnnnnnn                          nnnn
+	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+	nnnnnnnn                           nnn
+	nnnnnnnn    nnnnnnnn     nnnnnnn   nnn
+	nnnnnnnn      nnnnnnn      nnn     nnn
+	nnnnnnnn      nnnnnnnn     nnn     nnn
+	nnnnnnnn      nnnnnnnnnn   nnn     nnn
+	nnnnnnnn      nnn nnnnnnn  nnn     nnn
+	nnnnnnnn      nnn  nnnnnnnnnnn     nnn
+	nnnnnnnn      nnn   nnnnnnnnnn     nnn
+	nnnnnnnn      nnn     nnnnnnnn     nnn
+	nnnnnnnn      nnn      nnnnnnn     nnn
+	nnnnnnnn    nnnnnnnn    nnnnnn     nnn
+	  nnnnnn                           nnn
+		nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn		We're hiring!
+		  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn		notion.so/careers
+
+	“yeah, I would probably eat a lemon for one hundred dollars” -- Ivan Zhao (2023-07-14)
+				  font-family: monospace @ https://www.notion.so/_assets/mainApp-e307ed19f94587a0.js:61
+[     720ms] [INFO] 2026-05-27T07:49:38.488Z [error] handleRestrictedStateForResponse: callApi {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[     816ms] [INFO] 2026-05-27T07:49:38.584Z [info] syncRecordValuesBatched: recordPointerMissingSpaceId {actor: Object, data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[     838ms] [WARNING] Amplitude Logger [Warn]: Event not tracked, no destination plugins on the instance @ https://www.notion.so/_assets/transport-support-49d6a98cbf389fa8.js:0
+[     839ms] [INFO] 2026-05-27T07:49:38.607Z [error] eventTrailApiHelpers: trackFailure {error: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[    1164ms] [INFO] 2026-05-27T07:49:38.932Z [info] appHelpers: shouldShowError {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[    1232ms] [INFO] 2026-05-27T07:49:39.000Z [info] pageError: pageError {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[    1233ms] [INFO] 2026-05-27T07:49:39.002Z [info] appHelpers: shouldShowError {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[    1373ms] [INFO] 2026-05-27T07:49:39.141Z [error] handleRestrictedStateForResponse: callApi {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[    1374ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://www.notion.so/api/v3/recordPageExit:0
+[    1378ms] [WARNING] Ignoring inability to install OPFS sqlite3_vfs: Cannot install OPFS: Missing SharedArrayBuffer and/or Atomics. The server must emit the COOP/COEP response headers to enable those. See https://sqlite.org/wasm/doc/trunk/persistence.md#coop-coep @ https://www.notion.so/_assets/wasm-sqlite-worker-b6861135b361cf2b.js:0
+[    1735ms] [INFO] 2026-05-27T07:49:39.503Z [info] sqliteSchemaHelpers: attemptFastForwardMigration {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[    1767ms] [ERROR] HttpRequestError: Received HTTP 401
+    at d (https://www.notion.so/_assets/ClientFramework-a9e3676aed55803f.js:7:32748)
+    at async m (https://www.notion.so/_assets/ClientFramework-a9e3676aed55803f.js:7:34613)
+    at async r (https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:1:159)
+    at async l (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:1:5729) @ https://www.notion.so/_assets/handleHttpFailure-852e9b5617753094.js:0
+[    1767ms] [INFO] 2026-05-27T07:49:39.536Z [error] api: httpTrigger401 {data: Object} @ https://www.notion.so/_assets/app-a80398fd31c8a3cc.js:6
+[    1986ms] [INFO] 2026-05-27T07:49:39.754Z [info] sqliteSchemaHelpers: successfulFastForwardMigration {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[    2031ms] [WARNING] [GSI_LOGGER]: Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes. Learn more: https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment and https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[    2146ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://cdn.metadata.io/pixel/config/1127.json:0
+[    2829ms] [INFO] 2026-05-27T07:49:40.597Z [error] handleRestrictedStateForResponse: callApi {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[    7590ms] [ERROR] User declined or dismissed prompt. API exponential cool down triggered. @ https://www.notion.so/36d73457d9d081359fd9dd19e2e2ebba:0
+[    7592ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   14538ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.closed call. @ https://www.notion.so/_assets/5685-df8e986e7da151b3.js:182
+[   14538ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.closed call. @ https://www.notion.so/_assets/5685-df8e986e7da151b3.js:182
+[   26539ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.closed call. @ https://www.notion.so/_assets/5685-df8e986e7da151b3.js:182
+[   26539ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.closed call. @ https://www.notion.so/_assets/5685-df8e986e7da151b3.js:182
+[   27624ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.close call. @ https://www.notion.so/_assets/5685-df8e986e7da151b3.js:182
+[   27624ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.close call. @ https://www.notion.so/_assets/5685-df8e986e7da151b3.js:182
+[   27654ms] [INFO] 2026-05-27T07:50:05.422Z [info] handleGoogleAuthRedirect: googleAuthRedirect {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   27656ms] [INFO] 2026-05-27T07:50:05.425Z [info] handleGoogleAuthRedirect: googleAuthRedirectLoginAttempt {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   27668ms] [INFO] 2026-05-27T07:50:05.436Z [info] appHelpers: shouldShowError {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   28009ms] [INFO] 2026-05-27T07:50:05.777Z [info] syncRecordValuesBatched: recordPointerMissingSpaceId {actor: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   29422ms] [INFO] 2026-05-27T07:50:07.191Z [error] main: ClientError {error: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   29451ms] Error: Failed to load a required record: user_root, 36dd872b-594c-81b4-a3a9-00029b34164e, undefined.
+    at Object.loadRecordModel [as loadFn] (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:5:89386)
+    at async https://www.notion.so/_assets/5685-df8e986e7da151b3.js:186:20751
+    at async Promise.all (index 0)
+    at async o (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:186:20692)
+    at async r (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:186:20303)
+    at async Object.s (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:186:21464)
+    at async Object.r (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:5:88960)
+    at async h (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:86:103062)
+    at async r.measureErrors (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:183:1200104)
+    at async g (https://www.notion.so/_assets/5685-df8e986e7da151b3.js:86:101157)
+[   29455ms] [INFO] 2026-05-27T07:50:07.223Z [info] syncRecordValuesBatched: missingSpacePointerForNotionUserRequest {actor: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   29553ms] [INFO] 2026-05-27T07:50:07.321Z [info] PageLoader: loserAborted {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   29899ms] [INFO] 2026-05-27T07:50:07.667Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   30124ms] [INFO] 2026-05-27T07:50:07.893Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   31219ms] [INFO] 2026-05-27T07:50:08.988Z [info] ai.completionActions: maybeUpdateAIUsageEligibilityStoreV2Refreshing {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  195866ms] [INFO] 2026-05-27T07:52:53.633Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  208368ms] [INFO] 2026-05-27T07:53:06.136Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  211325ms] [INFO] 2026-05-27T07:53:09.093Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  211325ms] [INFO] 2026-05-27T07:53:09.094Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  211600ms] [INFO] 2026-05-27T07:53:09.369Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  211618ms] [INFO] 2026-05-27T07:53:09.386Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  211668ms] [INFO] 2026-05-27T07:53:09.436Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  211935ms] [INFO] 2026-05-27T07:53:09.703Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  212818ms] [INFO] 2026-05-27T07:53:10.586Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  212852ms] [INFO] 2026-05-27T07:53:10.620Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  212884ms] [INFO] 2026-05-27T07:53:10.652Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  218082ms] [INFO] 2026-05-27T07:53:15.850Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  218118ms] [INFO] 2026-05-27T07:53:15.887Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  218152ms] [INFO] 2026-05-27T07:53:15.920Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  218200ms] [INFO] 2026-05-27T07:53:15.969Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  218368ms] [INFO] 2026-05-27T07:53:16.136Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  221900ms] [INFO] 2026-05-27T07:53:19.668Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  222001ms] [INFO] 2026-05-27T07:53:19.770Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  226172ms] [INFO] 2026-05-27T07:53:23.940Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  226194ms] [INFO] 2026-05-27T07:53:23.962Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  308023ms] [INFO] 2026-05-27T07:54:45.792Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  373279ms] [INFO] 2026-05-27T07:55:51.047Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  421635ms] [INFO] 2026-05-27T07:56:39.403Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  437300ms] [INFO] 2026-05-27T07:56:55.068Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  822662ms] [INFO] 2026-05-27T08:03:20.430Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  854761ms] [INFO] 2026-05-27T08:03:52.529Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[  854820ms] [INFO] 2026-05-27T08:03:52.589Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[ 1849253ms] [INFO] 2026-05-27T08:20:27.021Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[ 1849258ms] [INFO] 2026-05-27T08:20:27.026Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[ 2184147ms] [INFO] 2026-05-27T08:26:01.915Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[ 2184148ms] [INFO] 2026-05-27T08:26:01.916Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[ 2184214ms] [INFO] 2026-05-27T08:26:01.983Z [error] ActorMemberships: MissingActorMembership {error: Object, data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472

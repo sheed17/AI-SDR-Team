@@ -4,7 +4,7 @@
 
 Draft specific, evidence-grounded outreach for a hybrid ABM plus SDR motion.
 
-The default conversion goal is a 5-minute workflow audit around one document-heavy process.
+The default conversion goal is a 5-minute carrier-invoice reconciliation audit around one completed-load workflow.
 
 LinkedIn drafts are prepared for the operator to send manually from the main account. Do not send from the alt/operator research account.
 
@@ -48,9 +48,9 @@ Before drafting:
 Every draft must include:
 
 - Specific observed signal
-- Light connection to manual document work
+- Light connection to carrier invoice, POD, lumper, billing, or rate-con reconciliation work
 - Brief offer
-- Low-pressure 5-minute workflow audit CTA
+- Low-pressure 5-minute reconciliation audit CTA
 
 When LinkedIn profile notes are available, drafts may also include one restrained personalization line tied to the person's role or visible business context.
 
@@ -81,23 +81,23 @@ Avoid:
 Subject:
 
 - Short and concrete
-- Can reference docs, manifests, customs entries, or quote intake
+- Can reference carrier invoices, rate cons, PODs, lumper receipts, billing, or carrier payables
 
 Body:
 
 1. Observation grounded in evidence.
-2. Why that often creates manual document work.
+2. Why that often creates invoice/rate-con reconciliation work.
 3. Neyma's small automation offer.
-4. Simple 5-minute workflow audit CTA.
+4. Simple 5-minute reconciliation audit CTA.
 
 ## Persona Angles
 
 Use the account tier and primary persona to shape the same evidence into the right business reason.
 
-- Founder/Owner/President: operational leverage, fewer manual bottlenecks, clean workflow without hiring extra admin.
-- COO/VP Ops/Head of Ops: intake consistency, throughput, exception handling, handoff from docs to systems.
-- Brokerage/Customs manager: ISF, POA, entry prep, invoice/packing-list extraction, cleaner work packets.
-- Import/Export or Documentation lead: less re-keying, fewer copy/paste loops, cleaner document intake.
+- Founder/Owner/President: margin recovery, fewer quiet payment leaks, cleaner back office without hiring extra admin.
+- COO/VP Ops/Head of Ops: exception handling, fewer invoice/POD chases, cleaner handoff from completed load to carrier payment.
+- Accounting/AP/Controller: pay only what matches the rate con, reduce duplicate/mismatched invoices, clearer exception queue.
+- Brokerage operations lead: fewer inbox/TMS/portal toggles, faster POD collection, cleaner load closeout.
 
 Do not invent pain from persona alone. The evidence signal still drives the hook.
 
@@ -105,27 +105,27 @@ Do not invent pain from persona alone. The evidence signal still drives the hook
 
 Signal B:
 
-`Noticed you are hiring a Manifest Clerk, which often means the ops team is spending real time hand-keying shipment docs and carrier PDFs into internal systems. We build small automation pipelines that extract the line items from those docs automatically. Worth a 5-minute look?`
+`Noticed you are hiring for billing/carrier-payables work, which often means someone is matching carrier invoices, PODs, and accessorial backup against completed loads by hand. We help small brokerages flag invoice vs. rate-con mismatches before AP pays the carrier. Worth a 5-minute look?`
 
 Signal A:
 
-`Saw that your quote workflow asks customers to send shipment details by email. That usually leaves someone in ops re-keying invoice, BOL, or packing-list data before work can move forward. Neyma builds small extraction automations for that exact document flow. Worth comparing notes?`
+`Saw that carrier/billing documents appear to route through email. That often leaves ops or AP toggling between the TMS, inbox, and POD/accessorial docs to decide whether the carrier invoice matches the rate con. Neyma flags those exceptions before payment. Worth comparing notes?`
 
 ## Email Draft Template
 
 Subject:
 
-`Quick question on [document/workflow signal]`
+`Quick question on [invoice/rate-con signal]`
 
 Body:
 
 `Hi [First Name],`
 
-`Noticed [specific Signal A or Signal B from evidence]. That often means ops is spending time moving details from [document type] into internal systems by hand.`
+`Noticed [specific Signal A or Signal B from evidence]. That often means ops or AP is spending time checking carrier invoices, PODs, and accessorials against the rate con by hand.`
 
-`Neyma builds small done-for-you automation pipelines that extract structured line items from messy logistics PDFs, starting with one document type or workflow.`
+`Neyma builds small done-for-you reconciliation workflows that compare incoming carrier documents against the load/rate-con data already in the TMS and flag exceptions before payment.`
 
-`Worth a 5-minute workflow audit to see where this could remove manual re-keying?`
+`Worth a 5-minute reconciliation audit to see where invoice variances may be slipping through?`
 
 `Best,`
 
@@ -133,7 +133,7 @@ Body:
 
 ## LinkedIn Draft Template
 
-`Hi [First Name], noticed [specific Signal A or Signal B]. We help freight/brokerage teams extract fields and line items from messy logistics PDFs before ops has to re-key them. Worth a 5-minute workflow audit?`
+`Hi [First Name], noticed [specific Signal A or Signal B]. We help small freight brokerages flag carrier invoice vs. rate-con mismatches before AP pays the carrier. Worth a 5-minute look?`
 
 ## LinkedIn Main-Account Drafting
 
@@ -149,20 +149,20 @@ Rules:
 
 Template:
 
-`Hi [First Name], saw from your profile that you work on [role/service-line context] at [Company]. Also noticed [specific Signal A or Signal B]. Neyma helps freight/brokerage teams extract line items from messy logistics PDFs so ops is not hand-keying the same data. Worth a quick look?`
+`Hi [First Name], saw from your profile that you work on [role/service-line context] at [Company]. Also noticed [specific Signal A or Signal B]. Neyma helps small freight brokerages catch carrier invoice vs. rate-con mismatches before payment. Worth a quick look?`
 
 If only a company page is found:
 
-`Hi [First Name/company team], noticed [specific Signal A or Signal B]. Neyma helps freight/brokerage teams extract line items from messy logistics PDFs so ops is not hand-keying the same data. Worth a quick look?`
+`Hi [First Name/company team], noticed [specific Signal A or Signal B]. Neyma helps small freight brokerages catch carrier invoice vs. rate-con mismatches before payment. Worth a quick look?`
 
 ## Sequence Copy
 
 Email 1:
 
 - Evidence-backed observation.
-- One sentence on the likely document workflow.
+- One sentence on the likely invoice/POD/rate-con reconciliation workflow.
 - One sentence on Neyma.
-- Ask for a 5-minute workflow audit.
+- Ask for a 5-minute reconciliation audit.
 
 Follow-up 1, 3-5 business days later:
 
@@ -171,7 +171,7 @@ Follow-up 1, 3-5 business days later:
 
 Follow-up 2, 7-10 business days after follow-up 1:
 
-- Offer to show what extraction would look like for one document example.
+- Offer to show what reconciliation would look like for one sample carrier invoice/rate-con flow.
 
 Breakup:
 

@@ -12,8 +12,8 @@ For the daily three-gate eval and optional token logging, use `13_agent_evals.md
 
 A prospect is ready for approval only if all are true:
 
-- Company matches freight forwarder or customs broker ICP.
-- Headcount appears roughly 10-40 staff or uncertainty is explicitly noted.
+- Company matches small freight brokerage ICP.
+- Headcount appears roughly 5-20 staff, or 10-40 for a still-lean brokerage, with uncertainty explicitly noted.
 - A real Signal A or Signal B is recorded.
 - Every pain claim has an evidence URL.
 - Evidence quote or job title is captured.
@@ -35,10 +35,10 @@ Fail the prospect when any are true:
 - No real signal exists.
 - The hook is based only on industry assumptions.
 - Evidence URL does not support the claim.
-- Job posting is unrelated to documentation or operations.
+- Job posting is unrelated to brokerage operations, billing, settlements, carrier payables, AP, load entry, PODs, or compliance.
 - Company is clearly outside ICP.
 - Draft claims the company has a problem without evidence.
-- Draft sounds generic enough to send to any forwarder.
+- Draft sounds generic enough to send to any freight company.
 - A-tier account has no account POV.
 - A-tier account has only one person and no notes explaining why another person could not be found.
 - LinkedIn person fields contain company pages or generic search URLs.
@@ -51,16 +51,16 @@ Before setting `State` to `PENDING_APPROVAL`, check:
 - Does the first sentence mention the observed signal?
 - Can the operator click the evidence URL and verify the hook?
 - Is the offer one small automation workflow, not a platform pitch?
-- Is the CTA a low-pressure 5-minute workflow audit?
+- Is the CTA a low-pressure 5-minute reconciliation audit?
 - Is the email under roughly 120 words?
 - Is LinkedIn under roughly 300 characters when possible?
 - Is the LinkedIn draft addressed to the best named decision-maker when one is findable?
 - If the draft says `Hi team`, does the row explain that no strong named decision-maker was found?
-- Does `Workflow Audit Angle` name a specific process, such as POA, ISF, invoice, packing list, email/fax intake, or entry prep?
+- Does `Workflow Audit Angle` name a specific process, such as carrier invoice vs. rate-con matching, POD intake, lumper/accessorial review, duplicate invoice detection, or carrier-payables exception handling?
 - Does `Primary Persona` match the message angle?
 - Is `Message Gate` `PASS`?
 - Is `Booking Priority` `HIGH` for A-tier, or intentionally `MEDIUM` for a lighter B-tier?
-- Are there no unsupported claims about savings, staffing, or volume?
+- Are there no unsupported claims about savings, staffing, volume, variance rate, or invoice leakage?
 
 ## Account Tier Decision
 
@@ -103,6 +103,6 @@ For the first 20 prospects, capture learnings in `Notes`:
 - Any repeatable pattern for future discovery
 - Persona that received the message
 - Reply type and objection/referral language
-- Whether the 5-minute workflow audit CTA worked
+- Whether the 5-minute reconciliation audit CTA worked
 
 The golden set should teach the system what a good prospect looks like.

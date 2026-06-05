@@ -52,19 +52,19 @@ Use:
 
 Question:
 
-`Is the pain signal real, cited, and relevant to manual document work?`
+`Is the pain signal real, cited, and relevant to carrier invoice reconciliation or brokerage back-office work?`
 
 PASS requires:
 
 - Evidence URL exists.
 - Evidence quote or job title exists.
-- The evidence supports manual document intake, re-keying, forms, email/fax workflows, customs docs, shipment docs, carrier PDFs, commercial invoices, packing lists, POAs, ISF, bills of lading, manifests, or related ops paperwork.
+- The evidence supports carrier invoice intake, POD collection, lumper/accessorial backup, billing, settlements, carrier payables, AP, load entry, TMS usage, email/fax/portal document workflows, or related brokerage operations paperwork.
 - The outreach hook can point to the evidence without exaggerating it.
 
 REVIEW when:
 
 - Evidence is real but weak.
-- The evidence is relevant to operations but not clearly document-heavy.
+- The evidence is relevant to operations but not clearly tied to billing, carrier payables, PODs, invoices, TMS, or load closeout.
 - The evidence URL is broad and needs a better page.
 - There is a timing signal but no clear manual workflow signal.
 
@@ -94,9 +94,9 @@ PASS requires:
 - Title fits the buying committee:
   - Founder, Owner, President
   - COO, VP Ops, Head of Ops, Operations Manager
-  - Customs Brokerage Manager
-  - Import/Export Manager
-  - Documentation or senior brokerage lead
+  - Accounting Manager, AP Manager, Controller
+  - Billing Manager, Carrier Payables, Settlements
+  - Senior brokerage operations lead
 - Confidence is honest.
 
 REVIEW when:
@@ -129,8 +129,8 @@ PASS requires:
 
 - First line references the observed signal.
 - Message names the workflow angle.
-- CTA is low-friction, usually a 5-minute workflow audit.
-- No unsupported claims about savings, volume, staffing, or urgency.
+- CTA is low-friction, usually a 5-minute reconciliation audit.
+- No unsupported claims about savings, volume, staffing, variance rates, invoice leakage, or urgency.
 - Copy is concise and calm.
 - LinkedIn draft is safe for manual use.
 
@@ -165,7 +165,7 @@ HIGH:
 - Account is A-tier or strong B-tier.
 - There is a real workflow angle.
 - Person is a strong buyer/operator.
-- There is a reason this may matter now, such as hiring, growth, visible manual intake, or a sharp document workflow.
+- There is a reason this may matter now, such as hiring, growth, visible carrier-payables work, TMS usage, billing friction, POD collection, or a sharp reconciliation workflow.
 
 MEDIUM:
 
@@ -184,9 +184,9 @@ Keep `Gate Notes` short.
 
 Good examples:
 
-- `Signal PASS: POA PDF intake page says forms must be emailed back. Person PASS: owner direct /in profile. Message PASS: hook references POA intake. Priority HIGH.`
-- `Person REVIEW: company fit and signal strong, but only general inbox found. Needs Sales Nav person search.`
-- `Signal FAIL: homepage only; no manual-document evidence found.`
+- `Signal PASS: carrier page routes invoices/PODs to billing inbox. Person PASS: owner direct /in profile. Message PASS: hook references invoice/rate-con reconciliation. Priority HIGH.`
+- `Person REVIEW: company fit and billing signal strong, but only general inbox found. Needs Sales Nav person search.`
+- `Signal FAIL: homepage only; no carrier-payables, billing, POD, TMS, or reconciliation evidence found.`
 
 ## Token Logging
 
@@ -263,7 +263,7 @@ Update `Learning Notes` with:
 - best signals
 - best titles
 - best regions
-- best workflow audit angles
+- best reconciliation audit angles
 - objections by persona
 - copy patterns to reuse
 - copy patterns to ban

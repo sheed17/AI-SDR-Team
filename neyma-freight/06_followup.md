@@ -38,15 +38,15 @@ Suggested manual cadence:
 
 `Hi [First Name], quick follow-up on my note about [specific signal].`
 
-`If your team is manually pulling line items from [document type] into your systems, Neyma can usually start with one narrow workflow and show what extraction would look like.`
+`If your team is manually checking carrier invoices, PODs, or accessorials against rate cons, Neyma can usually start with one narrow workflow and show what the exception queue would look like.`
 
-`Worth a 5-minute workflow audit?`
+`Worth a 5-minute reconciliation audit?`
 
 ## Follow-Up 2 Template
 
 `Hi [First Name], closing the loop here.`
 
-`I reached out because [specific signal] looked like a possible manual-doc workflow around [document type/process]. If this is not a priority, no worries.`
+`I reached out because [specific signal] looked like a possible carrier-payables reconciliation workflow around [invoice/POD/rate-con process]. If this is not a priority, no worries.`
 
 `If it is on your radar later, happy to compare notes.`
 
@@ -58,7 +58,7 @@ If prospect replies:
 - Capture summary in `Outcome` and `Notes`
 - Set `Reply Type` to `positive`, `referral`, `objection`, `not interested`, `bounce`, or `no reply`
 - Capture useful wording in `Learning Notes`
-- Update `Meeting Outcome` when the reply leads toward or away from a workflow audit
+- Update `Meeting Outcome` when the reply leads toward or away from a reconciliation audit
 - Update `Objection Category` when the reply contains an objection
 - Update `Booking Hypothesis` if the reply confirms or disproves the original reason for outreach
 - Do not auto-respond
@@ -73,5 +73,5 @@ If prospect asks for details:
 
 - Set `State` to `REPLIED`
 - Prepare a concise response grounded in the original signal
-- Prefer moving toward a 5-minute workflow audit over sending a long explanation
+- Prefer moving toward a 5-minute reconciliation audit over sending a long explanation
 - Stop for explicit operator send command before sending

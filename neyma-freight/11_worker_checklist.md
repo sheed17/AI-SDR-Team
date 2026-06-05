@@ -56,9 +56,9 @@ For each campaign:
 
 Only add a candidate when at least one is plausible:
 
-- Freight forwarder or customs broker
-- 10-40 staff or likely small operator-led firm
-- Manual intake signal may exist
+- Small freight brokerage
+- 5-20 staff, or 10-40 staff for a still-lean operator-led firm
+- Carrier invoice, POD, billing, TMS, or reconciliation signal may exist
 - Hiring signal may exist
 - Decision-maker is findable
 
@@ -103,10 +103,10 @@ Every draft must include:
 - Specific signal
 - Evidence-grounded hook
 - Small automation offer
-- Low-pressure 5-minute workflow audit CTA
+- Low-pressure 5-minute reconciliation audit CTA
 - `Account POV`
 - `Workflow Audit Angle`
-- Persona-aware copy for founder, ops, brokerage, import/export, or documentation
+- Persona-aware copy for founder, ops, accounting/AP, carrier payables, billing, or settlements
 - `Message Gate` is `PASS`, or there is a clear reason for `NEEDS_EDIT`
 - `Booking Priority` is `HIGH` for A-tier sends
 - `Booking Hypothesis`

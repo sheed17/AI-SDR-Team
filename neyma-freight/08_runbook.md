@@ -57,7 +57,7 @@ Recommended fields:
 | Goal | Text | Plain-English campaign goal |
 | Region | Text | Target region |
 | Target Count | Number | Number of prospects to process |
-| ICP Segment | Select/Text | Freight forwarders, customs brokers, or both |
+| ICP Segment | Select/Text | Small freight brokerages, carrier-payables heavy brokerages, TMS users |
 | Source Mix | Text | LinkedIn, websites, search, jobs |
 | Stop State | Select | Usually `PENDING_APPROVAL` |
 | Campaign State | Select | REQUESTED, RUNNING, PAUSED, DONE, ERROR, NEEDS_REVIEW |
@@ -90,15 +90,15 @@ Recommended fields:
 | Region | Text or Select | City, state, country, or market |
 | Headcount Estimate | Text | Include source or uncertainty |
 | Decision Maker | Text | Name |
-| Decision Maker Title | Text or Select | Founder, Managing Director, COO, VP Operations, etc. |
+| Decision Maker Title | Text or Select | Founder, Owner, COO, VP Operations, Accounting/AP, Controller, etc. |
 | Decision Maker LinkedIn URL | URL | Direct `/in/...` person profile; leave blank or note LOW confidence if unavailable |
 | Decision Maker Confidence | Select | HIGH, MEDIUM, LOW |
 | Decision Maker Source | Select | LinkedIn profile, LinkedIn company, website, search, directory, operator-provided |
 | Decision Maker Search Notes | Text | Search queries, why selected, and uncertainty |
 | LinkedIn URL | URL | Company LinkedIn page or company-level LinkedIn context |
 | Account Tier | Select | A, B, C |
-| Buying Committee | Text | Account-level map of founder/ops/brokerage contacts |
-| Primary Persona | Select | Founder, Ops, Brokerage, Import/Export, Documentation |
+| Buying Committee | Text | Account-level map of founder/ops/accounting/carrier-payables contacts |
+| Primary Persona | Select | Founder, Ops, Accounting/AP, Carrier Payables, Billing, Settlements |
 | Person 1 Name | Text | Primary target name |
 | Person 1 Title | Text | Exact visible title |
 | Person 1 LinkedIn URL | URL | Direct `/in/...` profile |
@@ -137,10 +137,10 @@ Recommended fields:
 | Source Type | Select | Website, search, LinkedIn company, LinkedIn job, LinkedIn profile, directory, operator-provided |
 | LinkedIn Profile Notes | Text | Profile-based personalization notes from operator session |
 | Personalization Hook | Text | Human-safe hook for main-account outreach |
-| Signal A Found | Checkbox | Manual intake signal |
+| Signal A Found | Checkbox | Carrier-payables, invoice, POD, TMS, or billing workflow signal |
 | Signal A Evidence URL | URL | Required when Signal A is true |
 | Signal A Evidence Quote | Text | Short exact quote |
-| Signal B Found | Checkbox | Hiring signal |
+| Signal B Found | Checkbox | Hiring signal for brokerage ops, AP, billing, settlements, carrier payables, or load entry |
 | Signal B Evidence URL | URL | Required when Signal B is true |
 | Signal B Job Title | Text | Exact relevant job title |
 | Research Summary | Text | 3-5 sentence summary |
@@ -200,7 +200,7 @@ Approval values:
 2. Research
    - Use `03_research.md`.
    - Use `13_agent_evals.md` to apply Signal Gate and Person Gate.
-   - Prioritize company website, quote/contact pages, careers pages, LinkedIn, search results.
+   - Prioritize company website, carrier/billing/POD/contact pages, careers pages, LinkedIn, search results.
    - Capture Signal A and Signal B evidence.
    - For A-tier candidates, map at least two buying-committee contacts when possible.
 
@@ -242,7 +242,7 @@ Approval values:
 
 ## Goal-to-Result Operator Command
 
-`Run Neyma Freight campaign: 10 freight forwarders/customs brokers in Southern California. Use LinkedIn, websites, and search. Draft only with real evidence. Stop at PENDING_APPROVAL.`
+`Run Neyma Freight campaign: 10 small freight brokerages in Southern California. Use LinkedIn, websites, jobs, and search. Draft only with real carrier-payables or reconciliation evidence. Stop at PENDING_APPROVAL.`
 
 ## Agent Execution Rules
 
@@ -263,7 +263,7 @@ Approval values:
 - A-tier sends should normally have `Booking Priority` of `HIGH`.
 - Each send-ready row should include a `Booking Hypothesis` and exact `Call CTA`.
 - Token usage should be estimated per row and logged when actual token counts are available.
-- The CTA should ask for a 5-minute workflow audit unless the operator explicitly requests another conversion goal.
+- The CTA should ask for a 5-minute reconciliation audit unless the operator explicitly requests another conversion goal.
 - If no real signal exists, do not fabricate.
 - Use `DISQUALIFIED` or `NEEDS_REVIEW` when evidence is absent or ambiguous.
 - Keep drafts specific, concise, and calm.

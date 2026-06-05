@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Run Neyma Freight from a single operator goal to a concrete result: a Notion queue of evidence-backed, account-first GTM rows with buying committee mapping and workflow-audit outreach.
+Run Neyma Freight from a single operator goal to a concrete result: a Notion queue of evidence-backed, account-first GTM rows with buying committee mapping and reconciliation-audit outreach.
 
 This is the v0 worker contract. It is not a backend service. Codex acts as the worker loop until the process proves itself enough to justify deterministic glue.
 
@@ -10,7 +10,7 @@ This is the v0 worker contract. It is not a backend service. Codex acts as the w
 
 The operator should be able to say:
 
-`Run Neyma Freight for 10 customs brokers in Southern California. Use LinkedIn, company websites, and search. Stop at PENDING_APPROVAL.`
+`Run Neyma Freight for 10 small freight brokerages in Southern California. Use LinkedIn, company websites, jobs, and search. Stop at PENDING_APPROVAL.`
 
 The worker should not ask for handoff instructions between discovery, research, qualification, and drafting.
 
@@ -109,7 +109,7 @@ During sourcing, use:
 - LinkedIn jobs
 - Google/search results
 - Company websites
-- Quote/contact/intake pages
+- Carrier, billing, POD, claims, contact, and accounting pages
 - Careers pages
 
 During research, inspect whatever pages are needed to verify:
@@ -131,7 +131,7 @@ During outreach, write:
 - LinkedIn draft for manual send
 - Recommended angle
 - Personalization hook
-- Persona-specific 5-minute workflow audit CTA
+- Persona-specific 5-minute reconciliation audit CTA
 - Sequence step and next-touch plan
 
 After each step, apply `13_agent_evals.md` and write:
@@ -222,4 +222,4 @@ Do not provide a long transcript of every browsed page unless the operator asks.
 
 ## Default Campaign Command
 
-`Run Neyma Freight campaign: 10 freight forwarders/customs brokers in [region]. Use LinkedIn, websites, and search. Draft only with real evidence. Stop at PENDING_APPROVAL.`
+`Run Neyma Freight campaign: 10 small freight brokerages in [region]. Use LinkedIn, websites, jobs, and search. Draft only with real carrier-payables or reconciliation evidence. Stop at PENDING_APPROVAL.`

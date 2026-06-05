@@ -28,7 +28,7 @@ Score 9-10:
 - Clear Signal A or Signal B
 - Decision-maker identified
 - Buying committee mapped when possible
-- Evidence directly supports manual document work
+- Evidence directly supports carrier invoice, POD, billing, settlements, TMS, or reconciliation work
 - Outreach hook is obvious and specific
 - Account can be A-tier
 
@@ -64,7 +64,7 @@ Use one of:
 
 Use:
 
-- `A`: strong ICP fit, strong evidence, at least one credible email, account POV, workflow audit angle, and two mapped people when findable.
+- `A`: strong ICP fit, strong evidence, at least one credible email, account POV, reconciliation angle, and two mapped people when findable.
 - `B`: good ICP fit and real evidence but only one mapped person, general inbox, or lighter personalization.
 - `C`: weak signal, unclear ICP, missing decision-maker, missing email, or enrichment needed.
 
@@ -79,7 +79,7 @@ Use `Disqualifier` when relevant:
 - Too small
 - Carrier or warehouse-only
 - Software/vendor
-- No public manual-document signal
+- No public carrier-payables, billing, POD, invoice, TMS, or brokerage-ops signal
 - No decision-maker found
 - Inactive or low-quality web presence
 
@@ -108,7 +108,7 @@ After drafting:
 
 Use this in `Notes` when useful:
 
-`Qualified because [Signal A/B] shows [manual workflow], company appears to be [ICP fit], and [decision-maker] is likely responsible for operations. Uncertainty: [missing/unclear item].`
+`Qualified because [Signal A/B] shows [carrier-payables/reconciliation workflow], company appears to be [ICP fit], and [decision-maker] is likely responsible for operations, AP, or brokerage finance. Uncertainty: [missing/unclear item].`
 
 ## Hard Rule
 

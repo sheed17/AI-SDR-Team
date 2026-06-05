@@ -9,7 +9,7 @@ Turn a candidate into an evidence-backed prospect record. Research must support 
 Research in this order:
 
 1. Company website
-2. Contact, request quote, get started, or shipment intake pages
+2. Carrier, billing, payments, POD, claims, contact, or accounting pages
 3. Careers, jobs, hiring pages
 4. Sales Navigator account and lead search when available
 5. LinkedIn company or jobs pages when available through the operator session
@@ -39,11 +39,11 @@ If LinkedIn access is unavailable or blocked, continue with public website, jobs
 
 ## Research Steps
 
-1. Confirm the company is a freight forwarder or customs broker.
+1. Confirm the company is a small freight brokerage.
 2. Estimate headcount using website, LinkedIn, directory snippets, or public staff pages.
-3. Identify region and service focus.
-4. Look for Signal A: manual intake workflow.
-5. Look for Signal B: hiring for document-heavy operations roles.
+3. Identify region, brokerage mode, and service focus.
+4. Look for Signal A: carrier-payables, POD, billing, invoice, or TMS workflow signal.
+5. Look for Signal B: hiring for brokerage operations, carrier payables, billing, settlements, or load-entry roles.
 6. Run the decision-maker discovery pass.
 7. For A-tier candidates, map the buying committee.
 8. Write `Account POV` and `Workflow Audit Angle`.
@@ -53,15 +53,15 @@ If LinkedIn access is unavailable or blocked, continue with public website, jobs
 
 ## Signal A Evidence
 
-Signal A is a public manual-intake workflow.
+Signal A is public evidence that the brokerage likely handles carrier invoices, PODs, billing docs, or carrier payment workflows outside a fully automated system.
 
 Strong evidence:
 
-- A downloadable quote, customs, or shipment PDF form
-- Instructions to fill and email forms
-- Instructions to email shipping documents
-- Email-only quote workflow
-- A static quote form asking for manual follow-up without automated pricing or upload workflow
+- Instructions to email invoices, PODs, billing documents, claims, or accounting questions
+- Carrier packet, carrier setup, billing, payment, or document-submission page
+- Public TMS mention such as McLeod, Aljex, TAI, TMW, ARK, or EZ Loader
+- Website language showing truckload brokerage, carrier network, many modes/lanes, or high-touch carrier operations
+- Evidence that PODs, lumper receipts, accessorial backup, or carrier docs are collected through email, fax, portal, or manual upload
 
 Capture:
 
@@ -73,17 +73,21 @@ Evidence quote should be short and exact. Do not quote more than needed.
 
 ## Signal B Evidence
 
-Signal B is hiring for document-heavy operations work.
+Signal B is hiring for brokerage operations, carrier payables, billing, settlements, AP, or load-entry work.
 
 Strong evidence:
 
-- Current or recent posting for Manifest Clerk
-- Data Entry Clerk
+- Current or recent posting for Carrier Payables Specialist
+- Billing Specialist
+- Settlements Specialist
+- Accounting/AP Specialist
+- Brokerage Operations Specialist
+- Freight Broker Assistant
+- Load Entry Specialist
 - Logistics Coordinator
-- Import/Export Specialist
-- Documentation Clerk
-- Customs Entry Writer
-- Brokerage Entry Clerk
+- Operations Coordinator
+- Track and Trace Coordinator
+- Claims or Compliance Coordinator
 
 Capture:
 
@@ -102,9 +106,11 @@ Search LinkedIn and public search with combinations of:
 - `[Company] president`
 - `[Company] COO`
 - `[Company] operations`
-- `[Company] customs broker`
-- `[Company] import manager`
-- `[Company] brokerage manager`
+- `[Company] carrier payables`
+- `[Company] billing manager`
+- `[Company] accounting manager`
+- `[Company] settlements`
+- `[Company] freight brokerage operations`
 - `[Company] LinkedIn people`
 
 Prefer contacts in this order:
@@ -116,12 +122,12 @@ Prefer contacts in this order:
 5. VP Operations
 6. Head of Operations
 7. Operations Manager
-8. Customs Brokerage Manager, Import Manager, Export Manager, or senior licensed customs broker
+8. Accounting Manager, AP Manager, Controller, Billing Manager, Carrier Payables, Settlements, or senior brokerage operations lead
 
 Decision-maker confidence:
 
 - `HIGH`: named person visibly tied to the exact company in a founder, owner, president, executive, or operations leadership role.
-- `MEDIUM`: named person visibly tied to the exact company in a senior customs, import/export, brokerage, or operations role.
+- `MEDIUM`: named person visibly tied to the exact company in a senior brokerage operations, billing, settlements, accounting, AP, or carrier-payables role.
 - `LOW`: company page only, unclear current employment, old profile, directory-only mention, or title fit is weak.
 
 If confidence is `LOW`, keep the company email draft but do not pretend the outreach is person-specific. If no named person is findable after a real pass, write `No named decision-maker found after LinkedIn/search pass` in `LinkedIn Profile Notes`.
@@ -169,10 +175,10 @@ For A-tier accounts, fill:
 - `Person 2 Email` when verified or public
 - `Person 2 Confidence`
 
-Prefer one executive/operator and one operations/brokerage person:
+Prefer one executive/operator and one operations/accounting person:
 
 - Founder, Owner, President, Managing Director, COO, VP Operations, or Head of Operations
-- Customs Brokerage Manager, Import Manager, Export Manager, Documentation lead, or senior licensed customs broker
+- Operations Manager, Accounting Manager, AP Manager, Controller, Billing Manager, Carrier Payables, Settlements, or senior brokerage operations lead
 
 Do not fill `Person 1 LinkedIn URL` or `Person 2 LinkedIn URL` with a company page or generic search URL. Leave it blank and explain the gap in `Decision Maker Search Notes`.
 
@@ -182,16 +188,17 @@ Do not fill `Person 1 LinkedIn URL` or `Person 2 LinkedIn URL` with a company pa
 
 Example:
 
-`They appear to rely on customer-submitted POA/ISF docs, so the likely workflow is document intake -> validation -> re-keying into brokerage systems.`
+`They appear to run a lean truckload brokerage and route carrier/billing documents through email, so the likely workflow is carrier invoice/POD intake -> rate-con comparison -> exception review before payment.`
 
 `Workflow Audit Angle` names the narrow process to inspect in a 5-minute call.
 
 Good examples:
 
-- `POA onboarding packet -> structured importer profile`
-- `ISF worksheet -> clean shipment fields`
-- `Commercial invoice and packing list -> line item extraction`
-- `Email/fax intake -> validated brokerage work packet`
+- `Carrier invoice -> rate-con match check`
+- `POD and invoice intake -> payment-ready exception queue`
+- `Lumper/accessorial receipt -> rate-con variance flag`
+- `Shared billing inbox -> reviewed carrier-payables queue`
+- `TMS export -> invoice reconciliation audit`
 
 The audit angle must connect to Signal A or Signal B evidence.
 
@@ -201,10 +208,10 @@ Use profile details only to make the draft more relevant and human, not to inven
 
 Good personalization sources:
 
-- Role scope, such as operations, customs brokerage, import/export, or growth.
+- Role scope, such as brokerage operations, billing, carrier payables, settlements, accounting, or growth.
 - Recent company move or promotion.
 - Mentioned freight lane, market, service line, or operational responsibility.
-- Public posts about logistics, documentation, customs, or forwarding operations.
+- Public posts about logistics, freight brokerage, carrier operations, billing, accounting, or TMS workflows.
 
 Avoid:
 
@@ -222,7 +229,7 @@ Use 3-5 concise sentences:
 - What the company does
 - Estimated size and region
 - What signal was found
-- Why the signal suggests manual document work
+- Why the signal suggests carrier invoice, POD, billing, TMS, or reconciliation work
 - Any useful LinkedIn profile personalization
 - Any uncertainty
 

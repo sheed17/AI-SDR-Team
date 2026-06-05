@@ -73,7 +73,7 @@ Use these rules before advancing state:
 | Edge Case | Detection | State/Tier Action | Recovery Action |
 | --- | --- | --- | --- |
 | No evidence | No Signal A/B evidence URL or quote | `DISQUALIFIED` or `NEEDS_REVIEW`; C-tier | Search one more targeted query, then stop |
-| Weak evidence | Signal exists but does not clearly support manual-document pain | B/C-tier or `NEEDS_REVIEW` | Look for forms, careers, quote/intake pages |
+| Weak evidence | Signal exists but does not clearly support carrier-payables, invoice, POD, billing, TMS, or reconciliation pain | B/C-tier or `NEEDS_REVIEW` | Look for carrier/billing pages, careers, TMS mentions, POD/payment instructions, and targeted jobs |
 | Wrong person risk | Person may not work at company or title is irrelevant | `NEEDS_REVIEW`; lower confidence | Verify with Sales Nav, website, or search |
 | No direct person URL | Only company page or search result found | B/C-tier unless account is exceptional | Run Sales Nav people search |
 | General inbox only | No named email found | B-tier at best | Use general inbox only if signal is strong |
@@ -117,7 +117,7 @@ Set:
 
 - `State`: `REPLIED`
 - `Reply Type`: `positive`
-- `Next Best Action`: book or prepare the 5-minute workflow audit response
+- `Next Best Action`: book or prepare the 5-minute reconciliation audit response
 
 Do not auto-reply unless the operator explicitly asks.
 
@@ -173,7 +173,7 @@ Set:
 Stop research early when:
 
 - The company is outside ICP.
-- No manual-document signal appears after website, quote/contact, careers, and two targeted searches.
+- No carrier-payables, invoice, POD, billing, TMS, or reconciliation signal appears after website, carrier/billing/contact, careers, and two targeted searches.
 - Person mapping is impossible and the account has only weak signal.
 - The account is likely C-tier.
 

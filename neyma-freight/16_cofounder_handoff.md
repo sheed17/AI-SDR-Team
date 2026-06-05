@@ -104,7 +104,7 @@ For each A-tier account, prepare:
 - company summary
 - evidence-backed pain signal
 - account POV
-- workflow audit angle
+- reconciliation angle
 - buying committee map
 - primary and secondary person URLs
 - LinkedIn profile notes
@@ -144,23 +144,23 @@ Use `profile review only` when:
 
 Founder/Owner:
 
-`Hi [Name], noticed [Company] handles [customs/import/freight workflow]. I’m looking at where small brokerages lose time re-keying POA/ISF/invoice docs into ops systems. Thought this might be relevant given [specific signal].`
+`Hi [Name], noticed [Company] runs a lean brokerage operation around [freight workflow]. I’m looking at where small brokerages catch carrier invoice vs. rate-con mismatches before payment. Thought this might be relevant given [specific signal].`
 
 Ops:
 
-`Hi [Name], saw [specific signal] at [Company]. I’m looking at the intake-to-entry workflow where shipment docs get validated and keyed into internal systems. Worth comparing notes?`
+`Hi [Name], saw [specific signal] at [Company]. I’m looking at the completed-load workflow where carrier invoices, PODs, and accessorials get matched against the rate con. Worth comparing notes?`
 
-Brokerage/Import:
+Accounting/AP:
 
-`Hi [Name], noticed [specific POA/ISF/import signal]. We help turn messy customs docs into structured fields before entry prep. Thought this might be relevant to your team.`
+`Hi [Name], noticed [specific billing/carrier-payables signal]. We help small freight brokerages flag carrier invoice and accessorial mismatches before AP pays the carrier. Thought this might be relevant to your team.`
 
-Documentation:
+Carrier Payables/Ops:
 
-`Hi [Name], saw [specific documentation signal]. We’re focused on reducing copy/paste from commercial invoices, packing lists, and carrier PDFs into ops workflows. Thought this might be useful context.`
+`Hi [Name], saw [specific POD/invoice/TMS signal]. We’re focused on reducing the inbox/TMS/portal toggles involved in carrier invoice review and load closeout. Thought this might be useful context.`
 
 ## Email Opener Template
 
-`Noticed [specific evidence] at [Company]. That looks like a workflow where the team may be collecting docs, validating fields, and re-keying shipment data into internal systems.`
+`Noticed [specific evidence] at [Company]. That looks like a workflow where the team may be collecting carrier invoices/PODs and checking them against rate-con or TMS data before payment.`
 
 ## Proof Asset Framework
 
@@ -169,13 +169,13 @@ For A-tier accounts, decide whether a proof asset is needed.
 Use:
 
 - `none` when signal/person/timing are already strong.
-- `sample extraction` when the workflow involves invoices, packing lists, POAs, ISF, bills of lading, or carrier PDFs.
-- `workflow teardown` when the public intake flow itself is the hook.
+- `sample reconciliation` when the workflow involves carrier invoices, rate cons, PODs, lumper receipts, accessorials, or TMS exports.
+- `workflow teardown` when the public carrier-payables or billing flow itself is the hook.
 - `before/after sketch` when the buyer likely needs to understand the operational change quickly.
 
 Do not attach proof assets in cold email. Use them as a reason to book or continue:
 
-`I can show what this would look like on one sample invoice/packing-list flow.`
+`I can show what this would look like on one sample carrier invoice/rate-con flow.`
 
 ## Pilot Motion
 
@@ -183,30 +183,30 @@ The first sale should be a narrow done-for-you pilot, not a broad platform pitch
 
 Good pilot shapes:
 
-- commercial invoice and packing list extraction into spreadsheet/export
-- POA intake packet to structured importer profile
-- ISF worksheet to validated shipment fields
-- carrier PDF to line-item table
-- email/fax intake to reviewed brokerage work packet
+- carrier invoice to rate-con match check
+- POD and invoice intake to payment-ready exception queue
+- lumper/accessorial receipt to variance flag
+- shared billing inbox to reviewed carrier-payables queue
+- TMS export to invoice reconciliation audit
 
 Pilot framing:
 
-`Start with one document type, one workflow, and a reviewed output. If it works, expand.`
+`Start with one inbox, one TMS export, or one lane, then produce a reviewed exception queue. If it works, expand.`
 
 ## Call Framework
 
-The first call is a workflow audit.
+The first call is a reconciliation audit.
 
 Ask:
 
-1. Which docs are most painful to process?
+1. Which carrier invoices, PODs, or accessorial docs are most painful to review?
 2. Where do they arrive?
-3. What fields are manually keyed?
-4. Where do those fields go?
+3. What fields or line items are manually checked?
+4. Where does the rate con/load data live?
 5. How often does this happen?
-6. What breaks or slows things down?
+6. What mismatches or missing documents slow payment down?
 7. Who reviews exceptions?
-8. What would a useful structured output look like?
+8. What would a useful exception queue look like?
 
 Do not lead with model architecture, generic AI, or a big platform demo.
 
@@ -215,9 +215,9 @@ Do not lead with model architecture, generic AI, or a big platform demo.
 Use this path:
 
 1. Manual LinkedIn or email touch.
-2. 5-minute workflow audit.
-3. Ask for 1-3 sample or representative docs.
-4. Produce structured output or workflow sketch.
+2. 5-minute reconciliation audit.
+3. Ask for 1-3 sample or representative completed-load packets.
+4. Produce an exception-queue sketch or reconciliation output.
 5. Propose one narrow done-for-you pilot.
 6. Convert to recurring automation if the pilot works.
 

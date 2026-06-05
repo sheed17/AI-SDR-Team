@@ -29,7 +29,7 @@ Recommended:
 
 - Apollo trial or account later, only when email enrichment becomes the bottleneck
 - Google Drive access if proof assets, sample docs, or Loom notes are stored there
-- Shared calendar link for booked workflow audits
+- Shared calendar link for booked reconciliation audits
 
 Not needed yet:
 
@@ -166,7 +166,7 @@ Test prompt:
 
 Use a small test before trusting a full run:
 
-`Run Neyma Freight research for 3 customs brokers in [region]. Use the playbooks, update Notion, map decision-makers, write LinkedIn/email drafts only when evidence is real, set the three gates and booking priority, and stop at PENDING_APPROVAL. Do not send anything.`
+`Run Neyma Freight research for 3 small freight brokerages in [region]. Use the playbooks, update Notion, map decision-makers, write LinkedIn/email drafts only when carrier-payables or reconciliation evidence is real, set the three gates and booking priority, and stop at PENDING_APPROVAL. Do not send anything.`
 
 Success looks like:
 
@@ -184,7 +184,7 @@ Success looks like:
 
 Once setup is verified:
 
-`Run Neyma Freight campaign for 10 freight forwarders/customs brokers in [region]. Prioritize A-tier accounts with manual-document evidence and a timing trigger. Map 2 decision-makers where possible, update Notion, draft email and LinkedIn outreach, set the three gates and booking priority, and stop at PENDING_APPROVAL. Do not send anything.`
+`Run Neyma Freight campaign for 10 small freight brokerages in [region]. Prioritize A-tier accounts with carrier-payables/reconciliation evidence and a timing trigger. Map 2 decision-makers where possible, update Notion, draft email and LinkedIn outreach, set the three gates and booking priority, and stop at PENDING_APPROVAL. Do not send anything.`
 
 ## Human Role
 

@@ -134,7 +134,7 @@ These decisions belong inside a step:
 - Which visible LinkedIn profile details matter.
 - Whether Signal A or Signal B is strong.
 - How to map the buying committee inside a research step.
-- How to write the account POV and workflow audit angle.
+- How to write the account POV and reconciliation angle for the `Workflow Audit Angle` field.
 - Which hook is most relevant.
 - How to phrase the email and LinkedIn draft.
 - How to reason about follow-up wording.
@@ -181,13 +181,13 @@ The connected Gmail account may be used for operator-commanded email outreach.
 Allowed:
 
 - Create Gmail drafts for qualified prospects.
-- Send Gmail messages after the operator explicitly asks to send and the row has credible email, evidence, account tier A or strong B, workflow audit angle, and draft content.
+- Send Gmail messages after the operator explicitly asks to send and the row has credible email, evidence, account tier A or strong B, reconciliation angle, and draft content.
 - Update Notion to `SENT` after a successful send.
 
 Forbidden:
 
 - Sending without explicit operator command.
-- Sending when evidence, credible email, account tier, workflow audit angle, or draft content is missing.
+- Sending when evidence, credible email, account tier, reconciliation angle, or draft content is missing.
 - Sending LinkedIn messages through the browser.
 - Bulk sending without operator-selected rows and explicit send instruction.
 

@@ -10,7 +10,7 @@ The motion is account-first hybrid ABM plus SDR:
 - B-tier accounts get lighter SDR-style outreach.
 - C-tier accounts are held for enrichment or disqualified.
 
-The conversion goal is a 5-minute workflow audit around one document-heavy process.
+The conversion goal is a 5-minute reconciliation audit around one completed-load carrier-payables process.
 
 ## Core Model
 
@@ -18,7 +18,7 @@ Start with the account, not the person.
 
 For each account:
 
-1. Confirm freight forwarder or customs broker fit.
+1. Confirm small freight brokerage fit.
 2. Find a real operational signal.
 3. Map the buying committee.
 4. Write an account point of view.
@@ -69,7 +69,7 @@ For A-tier accounts, map two to three people when possible:
 
 - Founder, Owner, or President
 - COO, VP Operations, Head of Operations, or Operations Manager
-- Customs Brokerage Manager, Import Manager, Export Manager, Documentation lead, or senior licensed customs broker
+- Accounting Manager, AP Manager, Controller, Billing Manager, Carrier Payables, Settlements, or senior brokerage operations lead
 
 Use:
 
@@ -93,22 +93,22 @@ Write one account-level thesis before drafting.
 
 Example:
 
-`They appear to rely on customer-submitted POA/ISF docs, so the likely workflow is document intake -> validation -> re-keying into brokerage systems.`
+`They appear to run a lean truckload brokerage and route carrier/billing documents through email, so the likely workflow is carrier invoice/POD intake -> rate-con comparison -> exception review before payment.`
 
 The POV must be grounded in the evidence URL. Do not make claims about volume, cost, or pain intensity unless the source supports it.
 
 ## Workflow Audit Angle
 
-The workflow audit angle names the exact process to inspect.
+The `Workflow Audit Angle` field names the exact reconciliation process to inspect.
 
 Good examples:
 
-- `POA onboarding packet -> structured importer profile`
-- `ISF worksheet -> clean shipment fields`
-- `Commercial invoice and packing list -> line item extraction`
-- `Email/fax intake -> validated brokerage work packet`
+- `Carrier invoice -> rate-con match check`
+- `POD and invoice intake -> payment-ready exception queue`
+- `Lumper/accessorial receipt -> rate-con variance flag`
+- `Shared billing inbox -> reviewed carrier-payables queue`
 
-The CTA should ask for a 5-minute workflow audit, not a demo.
+The CTA should ask for a 5-minute reconciliation audit, not a demo.
 
 ## Sequence
 

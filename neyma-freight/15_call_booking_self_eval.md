@@ -2,15 +2,15 @@
 
 ## Purpose
 
-This playbook evaluates whether Neyma is likely to produce booked 5-minute workflow audits, not just researched rows or sent emails.
+This playbook evaluates whether Neyma is likely to produce booked 5-minute reconciliation audits, not just researched rows or sent emails.
 
-The system should optimize for booked conversations with real operators who have document-heavy workflows.
+The system should optimize for booked conversations with real operators who have carrier invoice, POD, billing, settlements, or rate-con reconciliation workflows.
 
 ## Core Question
 
 For every A-tier or send-ready B-tier row, ask:
 
-`Would this specific person have a clear reason to say yes to a 5-minute workflow audit this week?`
+`Would this specific person have a clear reason to say yes to a 5-minute reconciliation audit this week?`
 
 If the answer is not clear, improve the account, person, angle, or timing before sending.
 
@@ -30,7 +30,7 @@ Add these fields to `Neyma Freight Pipeline`:
 
 Use:
 
-- `HIGH`: Strong account, strong signal, right person, good timing, sharp workflow audit angle.
+- `HIGH`: Strong account, strong signal, right person, good timing, sharp reconciliation angle.
 - `MEDIUM`: Possible, but likely needs better person, stronger trigger, or proof.
 - `LOW`: Low chance; hold, enrich later, or C-tier.
 
@@ -56,7 +56,7 @@ Neyma already handles 1, 2, and 4 reasonably. The biggest improvement opportunit
 - Evidence required before drafting.
 - Buying committee mapping exists for A-tier accounts.
 - LinkedIn person URLs are separated from company URLs.
-- Drafts are short and tied to a workflow audit.
+- Drafts are short and tied to a reconciliation audit.
 - Gate and edge-case routing prevent obvious bad sends.
 - Notion gives the operator a clear control surface.
 
@@ -66,7 +66,7 @@ Neyma already handles 1, 2, and 4 reasonably. The biggest improvement opportunit
 - Public evidence proves a workflow exists, but not that the company is actively trying to fix it.
 - General inbox sends are weaker than named-person sends.
 - A 5-minute audit is low-friction, but it may still feel abstract without a concrete example.
-- There is not yet a strong proof asset: sample extraction, before/after workflow, or one-page teardown.
+- There is not yet a strong proof asset: sample invoice/rate-con comparison, before/after exception queue, or one-page teardown.
 - Follow-ups may restate the same angle without adding new value.
 - The system tracks replies, but should more explicitly learn what booked meetings have in common.
 
@@ -76,14 +76,14 @@ Neyma already handles 1, 2, and 4 reasonably. The biggest improvement opportunit
 
 Prioritize accounts with both:
 
-- manual-document signal
+- carrier-payables, billing, POD, invoice, TMS, or reconciliation signal
 - timing signal
 
 Timing signals:
 
-- hiring for documentation/import/logistics roles
+- hiring for brokerage operations, carrier payables, billing, settlements, AP, load entry, track-and-trace, or logistics coordinator roles
 - recent growth or new location
-- job posts mentioning systems, data entry, customs entries, TMS, ERP, CargoWise, Descartes, NetSuite, Magaya, Cargowise, or ACE/ABI workflows
+- job posts mentioning systems, data entry, carrier invoices, PODs, carrier payables, billing, settlements, TMS, McLeod, Aljex, TAI, TMW, ARK, EZ Loader, ERP, or accounting workflows
 - recent LinkedIn posts about growth, new services, bottlenecks, compliance, or hiring
 - company page activity suggesting operational change
 
@@ -93,35 +93,35 @@ If no timing signal exists, the account can still be good, but `Booking Priority
 
 For A-tier accounts, create a tiny proof point before outreach:
 
-- a 3-line workflow audit note
+- a 3-line reconciliation audit note
 - a before/after sketch
-- a sample document extraction example using a public/sample logistics doc
-- a one-paragraph teardown of the observed intake flow
+- a sample carrier invoice vs. rate-con comparison using public/sample docs or mocked safe data
+- a one-paragraph teardown of the observed carrier-payables flow
 
 Do not attach files in cold email. Mention it lightly:
 
-`I can show what this would look like on one sample invoice/packing-list flow.`
+`I can show what this would look like on one sample carrier invoice vs. rate-con flow.`
 
 ### 3. Improve Persona-Specific Angles
 
 Founder/Owner:
 
-- angle: fewer manual ops bottlenecks without hiring another coordinator
-- avoid: technical extraction details too early
+- angle: recover margin from mismatched carrier invoices without hiring another back-office coordinator
+- avoid: technical matching details too early
 
 COO/Ops:
 
-- angle: reduce re-keying and exception handling in the intake-to-entry workflow
+- angle: reduce invoice/POD chases and exception handling between completed loads and carrier payment
 - avoid: vague AI pitch
 
-Brokerage/Import Manager:
+Accounting/AP/Controller:
 
-- angle: cleaner POA/ISF/commercial-invoice intake before entry prep
-- avoid: sounding like a replacement for brokerage judgment
+- angle: pay only what matches the rate con, catch duplicate invoices and accessorial variance before payment
+- avoid: sounding like a replacement for finance judgment
 
-Documentation Lead:
+Brokerage Operations Lead:
 
-- angle: reduce repetitive copy/paste from carrier/customer docs
+- angle: reduce inbox/TMS/portal toggles during load closeout and carrier-payables review
 - avoid: over-positioning as a strategic transformation
 
 ### 4. Use a Two-Person ABM Path for A-Tier
@@ -138,11 +138,11 @@ Do not blast all people at once. Multi-threading should be deliberate and low-vo
 
 Follow-up 1 should add a specific example:
 
-`The workflow I had in mind was POA/ISF intake -> field validation -> entry-prep packet, not a broad AI platform.`
+`The workflow I had in mind was carrier invoice/POD intake -> rate-con match check -> exception queue, not a broad AI platform.`
 
 Follow-up 2 should offer a sample:
 
-`Happy to mock this up against a sample commercial invoice/packing list if useful.`
+`Happy to mock this up against a sample carrier invoice/rate-con flow if useful.`
 
 This is better than “just bumping this.”
 
@@ -184,7 +184,7 @@ Before a row is sent, check:
 - `Call CTA` is exactly stated.
 - Account has Signal A or Signal B evidence.
 - A-tier has at least two mapped people or a note explaining the gap.
-- Outreach names the workflow audit angle.
+- Outreach names the reconciliation audit angle.
 - Email does not sound like an AI automation vendor blast.
 - Follow-up path adds value, not only bumps.
 
@@ -192,11 +192,11 @@ Before a row is sent, check:
 
 Good:
 
-`Worth a 5-minute workflow audit?`
+`Worth a 5-minute reconciliation audit?`
 
-`Open to a 5-minute look at where this could remove re-keying?`
+`Open to a 5-minute look at where invoice variances may be slipping through?`
 
-`Would it be useful if I showed what this could look like on one sample invoice/packing-list flow?`
+`Would it be useful if I showed what this could look like on one sample carrier invoice/rate-con flow?`
 
 Weak:
 
@@ -221,7 +221,7 @@ Capture:
 - evidence signal that caused the reply
 - title/persona that replied
 - exact CTA used
-- whether the workflow audit ask landed
+- whether the reconciliation audit ask landed
 - objections or questions raised
 - what proof asset would have helped
 
@@ -236,7 +236,7 @@ Review weekly:
 | Direct person LinkedIn URL coverage | 80%+ |
 | Verified/public email coverage | 60%+ |
 | Positive reply rate | 8-15% |
-| Workflow audit booked rate | 2-5% |
+| Reconciliation audit booked rate | 2-5% |
 | Bounce rate | Under 3% |
 | Wrong-person replies | Under 15% |
 
@@ -263,4 +263,4 @@ What makes it potentially top-tier:
 
 Next best improvement:
 
-Focus the next campaign on 10 A-tier accounts with both manual-document evidence and a timing trigger. Send fewer emails, but make each one strong enough that the recipient feels the note was written after real operational observation.
+Focus the next campaign on 10 A-tier accounts with both carrier-payables/reconciliation evidence and a timing trigger. Send fewer emails, but make each one strong enough that the recipient feels the note was written after real operational observation.

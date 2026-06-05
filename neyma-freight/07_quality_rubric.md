@@ -100,9 +100,4 @@ For the first 20 prospects, capture learnings in `Notes`:
 - Which signal was strongest
 - Which hook felt most natural
 - Why the prospect was qualified or disqualified
-- Any repeatable pattern for future discovery
-- Persona that received the message
-- Reply type and objection/referral language
-- Whether the 5-minute reconciliation audit CTA worked
-
-The golden set should teach the system what a good prospect looks like.
+- Any repeatable pattern for f

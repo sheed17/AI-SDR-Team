@@ -249,16 +249,4 @@ If the row is not ready, set:
 }
 ```
 
-## Definition Of Done
-
-The AI has done its job when the cofounder can act in under 2 minutes per row.
-
-He should not need to research from scratch.
-
-He should only need to:
-
-- inspect the profile
-- decide whether the suggestion is good
-- adjust tone if needed
-- send manually
-- record outcome
+## Definition O

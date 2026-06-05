@@ -15,22 +15,25 @@
 - Read `15_call_booking_self_eval.md`.
 - Read `17_cofounder_setup.md` only when setting up another operator machine.
 - Confirm Notion access.
-- Confirm LinkedIn local Chrome access if LinkedIn is in the source mix.
+- Confirm LinkedIn and Sales Navigator local browser access for the best SDR workflow.
+- Confirm Gmail access if the run is expected to send eligible emails.
 
 ## Campaign Intake
 
-Create or use a row in `Neyma Freight Campaigns`.
+When the operator says a casual command such as `run pipeline for 3 in NorCal`, normalize it into a campaign row in `Neyma Freight Campaigns`.
 
-Required:
+Infer missing values instead of asking:
 
-- Campaign Name
-- Goal
-- Region
-- Target Count
-- ICP Segment
-- Source Mix
-- Stop State: `PENDING_APPROVAL`
-- Campaign State: `REQUESTED`
+- Campaign Name: generated from count, region, and date.
+- Goal: the original operator prompt plus normalized intent.
+- Region: location phrase from the prompt; default `United States`.
+- Target Count: number from the prompt; default `10`.
+- ICP Segment: small freight brokerages.
+- Source Mix: public search, FMCSA/SAFER or authority lookup when available, DAT/Truckstop directories when available, LinkedIn/Sales Navigator, websites, jobs.
+- Stop State: `SENT` for eligible Gmail emails; blocked rows park themselves.
+- Campaign State: `REQUESTED`.
+
+Ask a question only when the command is impossible to interpret, such as no accessible tools, contradictory region/count, or no sending inbox when the operator clearly expects email sending.
 
 ## Processing Order
 
@@ -47,9 +50,9 @@ For each campaign:
 9. Write `Account POV` and `Workflow Audit Angle`.
 10. Draft outreach for qualified A-tier or strong B-tier rows only.
 11. Run Message Gate and set `Booking Priority`.
-12. Stop each drafted row at `PENDING_APPROVAL`.
+12. Send eligible Gmail emails after validation.
 13. Update campaign counters, token estimates, and gate counts.
-14. If the operator command includes sending, validate and send eligible emails.
+14. Park blocked rows in `NEEDS_REVIEW`, `DISQUALIFIED`, or `ERROR`.
 15. Summarize result.
 
 ## Sourcing Acceptance
@@ -62,6 +65,16 @@ Only add a candidate when at least one is plausible:
 - Hiring signal may exist
 - Decision-maker is findable
 
+Before promoting a sourced candidate to research, make a real account-first pass:
+
+- Sales Navigator was used first for account discovery and buyer mapping when available.
+- Universe source is captured: Sales Navigator, LinkedIn, search, FMCSA/SAFER, DAT, Truckstop, jobs, company website, or operator-provided.
+- Fit was checked against the ICP, including carrier-only, warehouse-only, software/vendor, and enterprise 3PL exclusions.
+- Authority or directory verification was attempted when the company has an MC/DOT or obvious directory presence.
+- Signal search was attempted for invoice, POD, billing, settlements, AP, TMS, carrier-payables, lumper, accessorial, and brokerage-ops terms.
+- Person mapping is not required until the account has plausible fit and signal.
+- `Sales Nav Account URL`, `Sales Nav Lead URLs`, `Sales Nav Search Notes`, `Source Stack Used`, `Authority/Directory Notes`, and `Signal Search Notes` are populated when available.
+
 ## Research Acceptance
 
 Research is complete only when:
@@ -69,6 +82,7 @@ Research is complete only when:
 - Company type is confirmed or uncertainty is noted.
 - Region is captured.
 - Headcount estimate is captured.
+- Sales Navigator account/lead context is captured when available.
 - Signal A or Signal B has been searched for.
 - Decision-maker has been searched for.
 - A-tier candidates have at least two buying-committee people searched for.
@@ -114,8 +128,9 @@ Every draft must include:
 
 Then set:
 
-- `State`: `PENDING_APPROVAL`
-- `Approval Status`: `PENDING`
+- `State`: `SENDING` then `SENT` when Gmail send validation passes under `run pipeline`
+- `State`: `NEEDS_REVIEW` when useful but blocked
+- `Approval Status`: optional; do not require it for `run pipeline`
 - `Sequence Step`: `Not started`
 - `Signal Gate`: `PASS`
 - `Person Gate`: `PASS`
@@ -141,64 +156,4 @@ Apply `15_call_booking_self_eval.md` before sending:
 
 - If `Booking Priority` is `HIGH`, prioritize the row.
 - If `Booking Priority` is `MEDIUM`, enrich trigger, person, proof, or CTA before sending.
-- If `Booking Priority` is `LOW`, hold or C-tier the row.
-- If the account has no timing trigger, keep the row but lower `Booking Priority` unless the evidence is unusually strong.
-- If the CTA is a demo request, rewrite it as a 5-minute workflow-audit ask.
-
-## Token Logging
-
-For every row, estimate token use:
-
-- C-tier early stop: `15000`
-- B-tier researched and drafted: `35000`
-- A-tier ABM with buying-committee mapping: `60000`
-
-When actual usage is available, write:
-
-- `Last Run Tokens`
-- `Tool Calls Used`
-- `Gate Notes` with any expensive or unusual research path
-
-## Do Not Do
-
-- Do not ask the operator to approve each transition.
-- Do not send email unless the operator's command explicitly includes sending.
-- Do not send LinkedIn messages.
-- Do not connect, follow, react, comment, endorse, or scrape at high volume.
-- Do not fabricate signals.
-
-## Email Send Validation
-
-Before sending a drafted campaign email, verify:
-
-- The row has a credible email address.
-- The row has an email subject and email draft.
-- The row has a real Signal A or Signal B evidence URL.
-- The row is `Account Tier` A or strong B.
-- The row has `Workflow Audit Angle`.
-- The row has `Signal Gate`, `Person Gate`, and `Message Gate` of `PASS`.
-- The row has `Booking Priority` of `HIGH` for A-tier.
-- The row has a concrete `Booking Hypothesis` and `Call CTA`.
-- The row is not rejected, held, disqualified, needs review, errored, or already sent.
-
-After a successful Gmail send, update:
-
-- `State`: `SENT`
-- `Outcome`: sent timestamp or Gmail message ID
-- `Sequence Step`: `Email 1`
-- `Last Touch Date`
-- `Next Touch Date`, normally 3-5 business days later
-- Campaign sent counter
-
-## End Report
-
-Report:
-
-- What campaign ran
-- How many prospects reached each terminal/parked state
-- How many prospects passed all gates, failed a gate, or need review
-- How many A-tier rows are `Booking Priority = HIGH`
-- Top edge cases blocking sends
-- Estimated campaign tokens and actual campaign tokens if available
-- Link to the review/send queue
-- Clear blockers
+- If `Booking

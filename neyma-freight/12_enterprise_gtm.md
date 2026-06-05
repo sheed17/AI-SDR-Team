@@ -160,6 +160,4 @@ Track:
 - Workflow audit rate.
 - Wrong-person rate.
 - Bounce rate.
-- Best hooks, titles, regions, and signals.
-
-The system improves by learning which evidence, persona, and angle combinations produce replies.
+- Best hooks, titles, regi

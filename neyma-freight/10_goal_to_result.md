@@ -10,7 +10,33 @@ This is the v0 worker contract. It is not a backend service. Codex acts as the w
 
 The operator should be able to say:
 
-`Run Neyma Freight for 10 small freight brokerages in Southern California. Use LinkedIn, company websites, jobs, and search. Stop at PENDING_APPROVAL.`
+`Run pipeline.`
+
+That plain command means:
+
+- Use the default region and target count unless the operator gives different values.
+- Use Sales Navigator as the primary account and buyer-mapping cockpit through the cofounder's logged-in session.
+- Use public web/jobs/authority sources to verify evidence and avoid false positives.
+- Source, research, qualify, draft, and send eligible Gmail emails.
+- Park weak or blocked rows automatically.
+- Draft LinkedIn copy only; do not send LinkedIn messages.
+- Summarize the run at the end.
+
+Natural-language variants are valid and should be normalized automatically:
+
+- `run pipeline for 3 in NorCal`
+- `run pipeline for 5 in Dallas`
+- `run pipeline 10 socal brokerages`
+- `find 3 and run the pipeline`
+- `run the freight pipeline in Chicago`
+
+The worker should infer:
+
+- Count from the number in the prompt, defaulting to 10.
+- Region from the location phrase, defaulting to United States.
+- ICP as small freight brokerages unless the operator explicitly changes it.
+- Source mix from the default SDR stack: Sales Navigator first, then public web/jobs/authority/directory verification.
+- Stop behavior as send eligible Gmail emails, park blocked rows, and draft LinkedIn only.
 
 The worker should not ask for handoff instructions between discovery, research, qualification, and drafting.
 
@@ -18,8 +44,8 @@ If a goal is missing region or count, use reasonable defaults:
 
 - Count: 10 prospects
 - Region: United States
-- Source mix: LinkedIn, search, company websites
-- Stop state: `PENDING_APPROVAL`
+- Source mix: Sales Navigator, LinkedIn, public search, FMCSA/SAFER or authority lookup when available, DAT/Truckstop directories when available, company websites, jobs
+- Stop state: `SENT` for eligible Gmail emails; `NEEDS_REVIEW`, `DISQUALIFIED`, or `ERROR` for blocked rows
 
 ## Campaign Control Surface
 
@@ -49,6 +75,21 @@ The prospect-level source of truth remains:
 
 `Neyma Freight Pipeline`
 
+## Best SDR Team Standard
+
+When the operator says `run pipeline`, optimize for the best autonomous SDR outcome, not just task completion.
+
+The standard is:
+
+- Sales Navigator first for account discovery, active employee/headcount checks, similar-account expansion, and buyer mapping.
+- Public evidence second for the pain claim: company website, jobs, carrier/billing pages, authority lookups, directories, and search results.
+- Account-first, not lead-first: qualify the brokerage before investing heavily in a person.
+- Evidence-gated: no pain claim, draft, or send without a cited Signal A or Signal B.
+- Buyer-mapped: prefer founder/owner/ops plus accounting/AP/carrier-payables coverage for A-tier accounts.
+- Autonomous by default: infer count, region, source mix, and next step; do not ask for approval between stages.
+- Safe by default: send eligible Gmail only after validation; never automate LinkedIn messages, follows, comments, reactions, or connection requests.
+- Learning-oriented: write edge cases, gate notes, booking hypothesis, and reply learning so the first 20-50 runs improve targeting.
+
 ## Campaign States
 
 Use:
@@ -76,10 +117,11 @@ For each campaign in `REQUESTED` or `RUNNING`:
    - `QUALIFIED` or `DISQUALIFIED`
    - `DRAFTING`
    - `DRAFTED`
-   - `PENDING_APPROVAL`
-4. Stop at `PENDING_APPROVAL`.
+   - `SENDING`
+   - `SENT`
+4. Stop sent rows at `SENT`; park blocked rows at `NEEDS_REVIEW`, `DISQUALIFIED`, or `ERROR`.
 5. Update campaign counters.
-6. Mark campaign `DONE` when the target number of prospects has reached `PENDING_APPROVAL`, `DISQUALIFIED`, or `NEEDS_REVIEW` and no actionable rows remain for the campaign.
+6. Mark campaign `DONE` when the target number of prospects has reached `SENT`, `DISQUALIFIED`, `NEEDS_REVIEW`, or `ERROR` and no actionable rows remain for the campaign.
 
 For enterprise-style runs, a row is not truly ready unless it also has:
 
@@ -102,8 +144,11 @@ For enterprise-style runs, a row is not truly ready unless it also has:
 
 During sourcing, use:
 
-- Sales Navigator account search when available
-- Sales Navigator lead search when available
+- Sales Navigator account search through the cofounder's logged-in session as the primary account-universe builder.
+- Sales Navigator lead search through the cofounder's logged-in session as the primary buyer-mapping surface.
+- Public search to build the initial account universe.
+- FMCSA/SAFER or equivalent authority lookup when available to verify broker/authority status and avoid carrier-only false positives.
+- DAT Directory, Truckstop directories, or similar freight-specific directories when available to find and verify brokerages.
 - LinkedIn company search
 - LinkedIn people search
 - LinkedIn jobs
@@ -112,114 +157,7 @@ During sourcing, use:
 - Carrier, billing, POD, claims, contact, and accounting pages
 - Careers pages
 
-During research, inspect whatever pages are needed to verify:
+During sourcing, run the account-first passes from `02_discovery.md`:
 
-- Company type
-- Size fit
-- Decision-maker
-- Buying committee
-- Signal A
-- Signal B
-- Evidence URL and quote
-- Account POV
-- Workflow Audit Angle
-
-During outreach, write:
-
-- Email subject
-- Email draft
-- LinkedIn draft for manual send
-- Recommended angle
-- Personalization hook
-- Persona-specific 5-minute reconciliation audit CTA
-- Sequence step and next-touch plan
-
-After each step, apply `13_agent_evals.md` and write:
-
-- `Signal Gate`
-- `Person Gate`
-- `Message Gate`
-- `Booking Priority`
-- `Gate Notes`
-- `Estimated Tokens`
-- `Last Run Tokens` when available
-- `Tool Calls Used` when available
-
-When messy inputs appear, apply `14_edge_cases.md` and write:
-
-- `Edge Case Type`
-- `Risk Flags`
-- `Recovery Action`
-- `Next Best Action`
-
-Before a row becomes send-ready, apply `15_call_booking_self_eval.md` and write:
-
-- `Booking Priority`
-- `Booking Hypothesis`
-- `Call CTA`
-- `Next Best Action`
-
-## Deterministic Stop Rules
-
-Stop and park the row when:
-
-- Evidence is missing: `DISQUALIFIED`
-- Evidence is ambiguous: `NEEDS_REVIEW`
-- Research hits access/tool failure: `ERROR` or `NEEDS_REVIEW`
-- Draft is ready: `PENDING_APPROVAL`
-
-Do not ask the operator what to do unless:
-
-- The campaign goal itself is contradictory.
-- A tool login is unavailable.
-- Sending is requested but a row is missing email, evidence, draft content, or is rejected/held/disqualified/already sent.
-- The row is high-risk or ambiguous enough that continuing would fabricate evidence.
-
-## Sending Rule
-
-The goal-to-result worker normally stops at `PENDING_APPROVAL`.
-
-Email sending is a separate operator-commanded action:
-
-- Operator must explicitly ask to send a campaign, row, or exact message.
-- The row must be `Account Tier` A or strong B.
-- The row must have a credible email address.
-- The row must have an evidence-backed draft and evidence URL.
-- The row must have a `Workflow Audit Angle`.
-- The row must have `Signal Gate`, `Person Gate`, and `Message Gate` of `PASS`.
-- A-tier rows should have `Booking Priority` of `HIGH`.
-- The row must have a concrete `Booking Hypothesis` and `Call CTA`.
-- The row must not be `REJECTED`, `HOLD`, `DISQUALIFIED`, `NEEDS_REVIEW`, `ERROR`, or `SENT`.
-- Codex updates successfully sent rows to `SENT`.
-
-LinkedIn remains draft-only.
-
-## Result Shape
-
-At the end of a campaign run, report:
-
-- Campaign URL
-- Number sourced
-- Number researched
-- Number qualified
-- Number drafted
-- Number pending approval
-- Number A-tier
-- Number B-tier
-- Number with two mapped people
-- Number with all gates passed
-- Number with gate failures
-- Number needing gate review
-- Number booking-priority rows
-- Top edge cases
-- Estimated campaign tokens
-- Actual campaign tokens if available
-- Number disqualified
-- Number needs review
-- Any blockers
-
-Do not provide a long transcript of every browsed page unless the operator asks.
-
-## Default Campaign Command
-
-`Run Neyma Freight campaign: 10 small freight brokerages in [region]. Use LinkedIn, websites, jobs, and search. Draft only with real carrier-payables or reconciliation evidence. Stop at PENDING_APPROVAL.`
+1. Sales Nav universe pass: collect likely small freight brokerages in the region.
+2. Fi

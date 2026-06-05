@@ -9,9 +9,10 @@ It uses:
 - Markdown playbooks for agent instructions
 - Notion as the pipeline, state, and review surface
 - Browser/Chrome/Computer Use for research
-- LinkedIn operator session for sourcing, profile/company/job research, and personalization only
-- Gmail for email sends after explicit operator send instruction
-- SendGrid only later, after the same explicit operator send instruction model is proven
+- LinkedIn Sales Navigator through the cofounder's logged-in browser session as the default account and buyer-mapping cockpit
+- LinkedIn regular pages for company/job/profile research and personalization only
+- Gmail for email sends during explicit `run pipeline` or send commands after row-level validation
+- SendGrid only later, after the same command-and-validation model is proven
 - Google Sheets only if Notion is unavailable
 
 Do not build:
@@ -22,7 +23,7 @@ Do not build:
 - Redis/Celery queue
 - Custom frontend
 - Vector database
-- Unattended sending without an explicit operator command
+- Unattended sending without `run pipeline` or another explicit operator send command
 - Complex agent framework
 
 The execution pattern is defined in `09_execution_model.md`: agents are agentic within one step, while state transitions between steps are deterministic.
@@ -58,8 +59,8 @@ Recommended fields:
 | Region | Text | Target region |
 | Target Count | Number | Number of prospects to process |
 | ICP Segment | Select/Text | Small freight brokerages, carrier-payables heavy brokerages, TMS users |
-| Source Mix | Text | LinkedIn, websites, search, jobs |
-| Stop State | Select | Usually `PENDING_APPROVAL` |
+| Source Mix | Text | Public search, FMCSA/SAFER, DAT/Truckstop directories, LinkedIn, Sales Navigator, websites, jobs |
+| Stop State | Select | Usually `SENT` for autonomous pipeline runs; `PENDING_APPROVAL` only for draft-only/review mode |
 | Campaign State | Select | REQUESTED, RUNNING, PAUSED, DONE, ERROR, NEEDS_REVIEW |
 | Prospects Sourced | Number | Counter |
 | Prospects Researched | Number | Counter |
@@ -96,17 +97,22 @@ Recommended fields:
 | Decision Maker Source | Select | LinkedIn profile, LinkedIn company, website, search, directory, operator-provided |
 | Decision Maker Search Notes | Text | Search queries, why selected, and uncertainty |
 | LinkedIn URL | URL | Company LinkedIn page or company-level LinkedIn context |
+| Sales Nav Account URL | URL | Sales Navigator account page when available |
+| Sales Nav Lead URLs | Text | Sales Navigator lead URLs for mapped people when available |
+| Sales Nav Search Notes | Text | Filters used, account/lead fit, similar-account paths, and limitations |
 | Account Tier | Select | A, B, C |
 | Buying Committee | Text | Account-level map of founder/ops/accounting/carrier-payables contacts |
 | Primary Persona | Select | Founder, Ops, Accounting/AP, Carrier Payables, Billing, Settlements |
 | Person 1 Name | Text | Primary target name |
 | Person 1 Title | Text | Exact visible title |
 | Person 1 LinkedIn URL | URL | Direct `/in/...` profile |
+| Person 1 Sales Nav URL | URL | Direct Sales Navigator lead URL when available |
 | Person 1 Email | Email | Verified or public email |
 | Person 1 Confidence | Select | HIGH, MEDIUM, LOW |
 | Person 2 Name | Text | Secondary buying committee contact |
 | Person 2 Title | Text | Exact visible title |
 | Person 2 LinkedIn URL | URL | Direct `/in/...` profile |
+| Person 2 Sales Nav URL | URL | Direct Sales Navigator lead URL when available |
 | Person 2 Email | Email | Verified or public email |
 | Person 2 Confidence | Select | HIGH, MEDIUM, LOW |
 | Account POV | Text | Evidence-grounded account thesis |
@@ -135,6 +141,9 @@ Recommended fields:
 | Email | Email | Only credible sourced or approved enrichment |
 | Initial Source URL | URL | First place the prospect was found |
 | Source Type | Select | Website, search, LinkedIn company, LinkedIn job, LinkedIn profile, directory, operator-provided |
+| Source Stack Used | Multi-select/Text | Public search, FMCSA/SAFER, DAT, Truckstop, LinkedIn, Sales Navigator, jobs, company website, operator-provided |
+| Authority/Directory Notes | Text | MC/DOT lookup, directory listing, broker verification, or source limitation |
+| Signal Search Notes | Text | Searched terms and what was or was not found for invoice/POD/billing/TMS signals |
 | LinkedIn Profile Notes | Text | Profile-based personalization notes from operator session |
 | Personalization Hook | Text | Human-safe hook for main-account outreach |
 | Signal A Found | Checkbox | Carrier-payables, invoice, POD, TMS, or billing workflow signal |
@@ -193,14 +202,18 @@ Approval values:
 
 1. Discovery
    - Use `02_discovery.md`.
+   - Source account-first: universe pass, fit pass, signal pass, person pass, capture pass.
+   - Use Sales Navigator first for account discovery, active employee/headcount checks, similar-account expansion, and buyer mapping.
+   - Use public search plus authority/directory verification for evidence and false-positive removal.
    - Use `13_agent_evals.md` to apply the Signal Gate when evidence is found.
    - Add candidates to Notion.
+   - Capture `Source Stack Used`, `Sales Nav Account URL`, `Sales Nav Lead URLs`, `Sales Nav Search Notes`, `Authority/Directory Notes`, and `Signal Search Notes` when available.
    - Set `State` to `NEW`, `SOURCING`, or `SOURCED`.
 
 2. Research
    - Use `03_research.md`.
    - Use `13_agent_evals.md` to apply Signal Gate and Person Gate.
-   - Prioritize company website, carrier/billing/POD/contact pages, careers pages, LinkedIn, search results.
+   - Prioritize Sales Navigator for account/lead mapping, then company website, carrier/billing/POD/contact pages, careers pages, LinkedIn, and search results for evidence.
    - Capture Signal A and Signal B evidence.
    - For A-tier candidates, map at least two buying-committee contacts when possible.
 
@@ -218,41 +231,42 @@ Approval values:
    - Use `15_call_booking_self_eval.md` to decide `Booking Priority`.
    - Draft only for qualified prospects with evidence.
    - Complete `Account POV` and `Workflow Audit Angle`.
-   - Set `State` to `PENDING_APPROVAL`.
-   - Set `Approval Status` to `PENDING`.
+   - In normal `run pipeline` mode, continue to send validation.
+   - In draft-only/review mode, set `State` to `PENDING_APPROVAL`.
 
-5. Human Review
-   - Operator can review evidence and drafts in Notion.
-   - Operator may set approval to `APPROVED`, `REJECTED`, `HOLD`, or `NEEDS_EDIT`, but this is optional in v0.
+5. Send Validation
+   - Treat `run pipeline` as the explicit send command.
+   - Verify the row has a credible email, evidence-backed draft, passing gates, valid account tier, booking hypothesis, and call CTA.
+   - If validation passes, send through Gmail and set `State` to `SENT`.
+   - If validation fails, set `State` to `NEEDS_REVIEW`, `DISQUALIFIED`, or `ERROR` and continue the campaign.
 
-6. Sending
-   - Email sending through Gmail is authorized when the operator explicitly asks to send a campaign, row, or exact message.
-   - Before sending, Codex must verify the row has a real email address, an evidence-backed draft, and is not rejected, held, disqualified, already sent, or missing evidence.
+6. Optional Human Review
+   - Operator can still review evidence and drafts in Notion when they ask for draft-only/review mode.
+   - Approval fields are optional and should not block normal `run pipeline` execution.
    - LinkedIn outreach remains draft-only in v0. The operator sends manually from the main account.
-   - After send, update `State` to `SENT`.
 
 7. Follow-Up
    - Use `06_followup.md`.
-   - Draft follow-ups.
-   - Stop for explicit operator send command before any follow-up send.
+   - `run followups` or another explicit follow-up command can send eligible Gmail follow-ups after validation.
+   - LinkedIn follow-ups remain draft-only/manual.
 
 ## Canonical Operator Command
 
-`Run Neyma Freight Discovery for 10 prospects. Use the playbooks, research each company, update Notion, draft outreach only when evidence is real, and stop at PENDING_APPROVAL.`
+`Run pipeline.`
 
 ## Goal-to-Result Operator Command
 
-`Run Neyma Freight campaign: 10 small freight brokerages in Southern California. Use LinkedIn, websites, jobs, and search. Draft only with real carrier-payables or reconciliation evidence. Stop at PENDING_APPROVAL.`
+`Run pipeline for 10 small freight brokerages in Southern California.`
 
 ## Agent Execution Rules
 
-- Never send without an explicit operator send command.
+- Never send without `run pipeline`, `run followups`, or another explicit operator send command.
 - Campaign runs should move from goal to review/send queue without asking the operator to hand off between sourcing, research, qualification, and drafting.
-- LinkedIn browsing through the alt/operator account is allowed for sourcing, research, and personalization only.
-- LinkedIn is also allowed for sourcing companies, jobs, and decision-makers.
-- Do not connect, follow, react, comment, endorse, or send LinkedIn messages from the alt/operator account.
+- Sales Navigator browsing through the cofounder's logged-in session is the preferred surface for sourcing companies, jobs, and decision-makers.
+- LinkedIn browsing through the cofounder's logged-in session is allowed for sourcing, research, and personalization only.
+- Do not connect, follow, react, comment, endorse, or send LinkedIn messages from the logged-in account.
 - Draft LinkedIn copy for the operator to send from the main account.
-- Codex may send emails through Gmail when the operator explicitly asks to send a campaign, row, or exact message and the row passes send validation.
+- Codex may send emails through Gmail when the operator says `run pipeline`, `run followups`, `send pipeline`, `send campaign`, or names an exact row/message, and the row passes send validation.
 - Every pain claim must cite an evidence URL.
 - Every hook must be grounded in Signal A or Signal B.
 - Every A-tier account must include a buying-committee map or a note explaining why a second person could not be found.
@@ -279,8 +293,8 @@ v0 is successful when:
 - Every A-tier prospect has an `Account POV`, `Workflow Audit Angle`, and buying-committee mapping.
 - Every drafted prospect passes the three gates or has a clear `NEEDS_REVIEW` reason.
 - Every A-tier send has a booking hypothesis, CTA, and next best action.
-- Operator can review, approve, reject, or hold rows in Notion.
-- No message is sent without an explicit operator send command.
+- Operator can review, reject, or hold rows in Notion when desired, but normal `run pipeline` execution does not wait for approval.
+- No Gmail message is sent without `run pipeline`, `run followups`, or another explicit operator send command.
 
 ## Optional Notion Views
 
@@ -302,10 +316,10 @@ Create these views if useful:
 - `High Priority Touches`: `Booking Priority` is `HIGH`
 - `This Week Touches`: `Next Touch Date` is not empty
 - `Reply Learning`: `Reply Type` is not empty
-- `Approval Queue`: `State` is `PENDING_APPROVAL`
+- `Draft-Only Queue`: `State` is `PENDING_APPROVAL`
 - `Needs Edit`: `Approval Status` is `NEEDS_EDIT`
 - `Disqualified`: `State` is `DISQUALIFIED`
-- `Golden Set`: first 20 manually reviewed prospects
+- `Golden Set`: first 20 inspected prospects
 
 ## Fallback
 

@@ -73,5 +73,4 @@ If prospect asks for details:
 
 - Set `State` to `REPLIED`
 - Prepare a concise response grounded in the original signal
-- Prefer moving toward a 5-minute reconciliation audit over sending a long explanation
-- Stop for explicit operator send command before sending
+- Prefer moving toward a 5-minute reconciliation audit over sending a long expla

@@ -108,8 +108,4 @@ After drafting:
 
 Use this in `Notes` when useful:
 
-`Qualified because [Signal A/B] shows [carrier-payables/reconciliation workflow], company appears to be [ICP fit], and [decision-maker] is likely responsible for operations, AP, or brokerage finance. Uncertainty: [missing/unclear item].`
-
-## Hard Rule
-
-If no real signal exists, do not draft. Set the prospect to `DISQUALIFIED` or `NEEDS_REVIEW`.
+`Qualified because [Signal A/B] shows [carrier-payables/reconciliation workflow], company appears to be [ICP fit], and [decision-maker] is likely responsible for operations, AP, or brokerage finance

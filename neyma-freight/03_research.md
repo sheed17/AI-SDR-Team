@@ -8,21 +8,28 @@ Turn a candidate into an evidence-backed prospect record. Research must support 
 
 Research in this order:
 
-1. Company website
-2. Carrier, billing, payments, POD, claims, contact, or accounting pages
-3. Careers, jobs, hiring pages
-4. Sales Navigator account and lead search when available
-5. LinkedIn company or jobs pages when available through the operator session
-6. LinkedIn decision-maker profiles when available through the operator session
-7. Search results, job boards, and business directories
+1. Sales Navigator account page through the cofounder's logged-in session for headcount, geography, active employees, similar companies, and company fit.
+2. Sales Navigator lead search through the cofounder's logged-in session for founder, ops, accounting/AP, billing, settlements, and carrier-payables contacts.
+3. Company website.
+4. Carrier, billing, payments, POD, claims, contact, or accounting pages.
+5. Careers, jobs, hiring pages.
+6. FMCSA/SAFER or equivalent authority lookup when MC/DOT/company data is available.
+7. Freight directories and load-board-adjacent directories when available, such as DAT Directory or Truckstop broker/carrier directory surfaces.
+8. LinkedIn company or jobs pages when available through the operator session.
+9. LinkedIn decision-maker profiles when available through the operator session.
+10. Search results, job boards, and business directories.
 
-## LinkedIn Operator Session Rules
+Sales Navigator is the default cockpit for account and buyer mapping. Public web, jobs, company pages, and authority/directory sources are still required for evidence. Do not use Sales Navigator alone to claim a company has invoice leakage or reconciliation pain.
 
-The operator may provide access to a logged-in LinkedIn alt/operator account for research.
+## LinkedIn / Sales Navigator Session Rules
+
+The cofounder is expected to be logged into his own LinkedIn/Sales Navigator session in the local browser.
 
 Allowed:
 
 - View company pages, jobs, people lists, and public/visible profile details.
+- Use Sales Navigator account and lead search for sourcing and buying-committee mapping.
+- Capture Sales Nav account URLs, lead URLs, search filters, and confidence notes.
 - Use visible profile details to identify decision-makers.
 - Capture profile-based personalization notes.
 - Draft outreach for the operator to send later from the main account.
@@ -35,7 +42,7 @@ Not allowed:
 - Scrape at high volume or bypass access controls.
 - Treat private profile details as evidence for pain claims unless they support a non-sensitive personalization note.
 
-If LinkedIn access is unavailable or blocked, continue with public website, jobs pages, search results, and operator-provided notes.
+If LinkedIn/Sales Navigator access is unavailable or blocked, continue with public website, jobs pages, search results, and operator-provided notes, mark `Person Gate` as `REVIEW` when buyer mapping is weaker, and do not A-tier an account solely from weak person data.
 
 ## Research Steps
 
@@ -49,7 +56,8 @@ If LinkedIn access is unavailable or blocked, continue with public website, jobs
 8. Write `Account POV` and `Workflow Audit Angle`.
 9. Review visible LinkedIn profile details for relevant personalization.
 10. Capture evidence URLs and exact short evidence quotes.
-11. Write a neutral research summary.
+11. Capture source stack, authority/directory notes, and signal search notes when available.
+12. Write a neutral research summary.
 
 ## Signal A Evidence
 
@@ -137,6 +145,8 @@ Capture:
 - Name
 - Title
 - Company LinkedIn URL, saved in `LinkedIn URL`
+- Sales Nav account URL when available
+- Sales Nav lead URL when available
 - Direct decision-maker profile URL, saved in `Decision Maker LinkedIn URL`
 - LinkedIn Profile Notes when visible and relevant
 - Personalization Hook for approved outreach
@@ -167,11 +177,13 @@ For A-tier accounts, fill:
 - `Person 1 Name`
 - `Person 1 Title`
 - `Person 1 LinkedIn URL`
+- `Person 1 Sales Nav URL` when available
 - `Person 1 Email` when verified or public
 - `Person 1 Confidence`
 - `Person 2 Name`
 - `Person 2 Title`
 - `Person 2 LinkedIn URL`
+- `Person 2 Sales Nav URL` when available
 - `Person 2 Email` when verified or public
 - `Person 2 Confidence`
 
@@ -184,75 +196,4 @@ Do not fill `Person 1 LinkedIn URL` or `Person 2 LinkedIn URL` with a company pa
 
 ## Account POV and Workflow Audit Angle
 
-`Account POV` is the account-level thesis. It should say what workflow appears likely from the evidence, without overclaiming.
-
-Example:
-
-`They appear to run a lean truckload brokerage and route carrier/billing documents through email, so the likely workflow is carrier invoice/POD intake -> rate-con comparison -> exception review before payment.`
-
-`Workflow Audit Angle` names the narrow process to inspect in a 5-minute call.
-
-Good examples:
-
-- `Carrier invoice -> rate-con match check`
-- `POD and invoice intake -> payment-ready exception queue`
-- `Lumper/accessorial receipt -> rate-con variance flag`
-- `Shared billing inbox -> reviewed carrier-payables queue`
-- `TMS export -> invoice reconciliation audit`
-
-The audit angle must connect to Signal A or Signal B evidence.
-
-## Profile Personalization
-
-Use profile details only to make the draft more relevant and human, not to invent business pain.
-
-Good personalization sources:
-
-- Role scope, such as brokerage operations, billing, carrier payables, settlements, accounting, or growth.
-- Recent company move or promotion.
-- Mentioned freight lane, market, service line, or operational responsibility.
-- Public posts about logistics, freight brokerage, carrier operations, billing, accounting, or TMS workflows.
-
-Avoid:
-
-- Sensitive personal details.
-- Overfamiliar comments.
-- Anything unrelated to the business reason for outreach.
-- Pain claims based only on a person's title.
-
-The final hook still needs Signal A or Signal B evidence. Profile details can shape the opener or CTA, but they cannot replace evidence.
-
-## Research Summary Format
-
-Use 3-5 concise sentences:
-
-- What the company does
-- Estimated size and region
-- What signal was found
-- Why the signal suggests carrier invoice, POD, billing, TMS, or reconciliation work
-- Any useful LinkedIn profile personalization
-- Any uncertainty
-
-## Stop Conditions
-
-Before setting a final research state, apply the Signal Gate and Person Gate in `13_agent_evals.md` and write:
-
-- `Signal Gate`
-- `Person Gate`
-- `Gate Notes`
-- `Estimated Tokens`
-- `Tool Calls Used` when available
-
-Set `State` to `NEEDS_REVIEW` when:
-
-- Evidence is ambiguous.
-- Company fit is plausible but not confirmed.
-- The decision-maker is unclear.
-
-Set `State` to `DISQUALIFIED` when:
-
-- The company is outside the ICP.
-- No real Signal A or Signal B exists after reasonable research.
-- Evidence cannot support a specific outreach hook.
-
-Never fabricate signals, quotes, titles, or emails.
+`Account POV` is the account-level thesis. It should say what workflow appears likely from the evidenc

@@ -256,11 +256,4 @@ Why not higher:
 What makes it potentially top-tier:
 
 - It is already account-first.
-- It separates evidence, person mapping, draft quality, deliverability, and booking priority.
-- It has a way to learn from each row.
-- It keeps LinkedIn manual and low-risk.
-- It can become extremely good if the first 20-50 accounts are treated as a learning lab, not a volume campaign.
-
-Next best improvement:
-
-Focus the next campaign on 10 A-tier accounts with both carrier-payables/reconciliation evidence and a timing trigger. Send fewer emails, but make each one strong enough that the recipient feels the note was written after real operational observation.
+- It separates evidence, person mapping, draft qualit

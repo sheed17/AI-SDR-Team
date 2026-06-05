@@ -10,14 +10,14 @@ LinkedIn drafts are prepared for the operator to send manually from the main acc
 
 ## Send Gate
 
-Never send anything without an explicit operator send command.
+Never send anything without an explicit operator send command. The command `run pipeline` counts as the operator's explicit send command for eligible Gmail emails in the current pipeline run.
 
 Email sending permission:
 
 - The operator has authorized Codex to send email on their behalf through the connected Gmail account.
-- This authorization does not allow unattended sending.
+- This authorization allows autonomous Gmail sending during a `run pipeline` command, but only for rows that pass send validation.
 - Create drafts freely when the prospect is qualified and evidence-backed.
-- Send emails only when the operator explicitly asks to send a campaign, row, or exact message and the row passes send validation.
+- Send emails when the operator says `run pipeline`, `send pipeline`, `send campaign`, or names an exact row/message, and the row passes send validation.
 
 LinkedIn sending boundary:
 
@@ -180,7 +180,7 @@ Breakup:
 
 ## After Drafting
 
-Before setting the row to `PENDING_APPROVAL`, apply the Message Gate in `13_agent_evals.md` and write:
+Before sending or parking the row, apply the Message Gate in `13_agent_evals.md` and write:
 
 - `Message Gate`
 - `Booking Priority`
@@ -191,27 +191,4 @@ Then apply the booked-call eval in `15_call_booking_self_eval.md` and write:
 - `Booking Priority`
 - `Booking Hypothesis`
 - `Call CTA`
-- `Next Best Action`
-
-Update Notion:
-
-- `Recommended Angle`
-- `Email Subject`
-- `Email Draft`
-- `LinkedIn Draft`
-- `LinkedIn Profile Notes`
-- `Personalization Hook`
-- `Account POV`
-- `Workflow Audit Angle`
-- `Sequence Step`
-- `Next Touch Date` when a touch is scheduled
-- `Message Gate`
-- `Booking Priority`
-- `Gate Notes`
-- `Booking Hypothesis`
-- `Call CTA`
-- `Next Best Action`
-- `State`: `PENDING_APPROVAL`
-- `Approval Status`: `PENDING`
-
-Do not send.
+- `Next Best 

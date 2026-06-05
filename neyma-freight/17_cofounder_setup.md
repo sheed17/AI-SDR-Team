@@ -21,9 +21,9 @@ Required:
 - Local copy of this repo
 - Codex access
 - Notion access to `Neyma Freight`
-- LinkedIn account with Sales Navigator if available
-- Browser/Chrome session logged into LinkedIn
-- Business email inbox access if he will send email
+- LinkedIn account with Sales Navigator
+- Browser/Chrome session logged into LinkedIn and Sales Navigator
+- Business Gmail/Workspace inbox access for autonomous email sends during `run pipeline`
 
 Recommended:
 
@@ -91,26 +91,30 @@ Confirm he can:
 
 ### LinkedIn / Sales Navigator
 
-He should log into LinkedIn locally.
+He should log into LinkedIn and Sales Navigator locally before running the pipeline.
 
-Sales Navigator is preferred for:
+Sales Navigator is the main SDR cockpit for:
 
 - account search
 - lead search
 - decision-maker mapping
 - saving leads/accounts
 - confirming direct person profiles
+- finding similar brokerages
+- checking active employees and rough headcount
+- mapping founder, ops, accounting/AP, billing, settlements, and carrier-payables contacts
 
 Rules:
 
-- LinkedIn is for research and manual human touches.
+- Sales Navigator is for account sourcing, lead sourcing, research, and context.
+- LinkedIn is for research and manual human touches only.
 - Do not automate LinkedIn messages.
 - Do not connect, follow, react, comment, or message from an automation flow.
-- The system drafts; the human decides.
+- The system drafts LinkedIn touches; the human decides whether to send them manually.
 
 ### Gmail / Business Email
 
-He needs Gmail or Workspace connected only if he will send email.
+He needs Gmail or Workspace connected for the fully autonomous version.
 
 Before sending, confirm:
 
@@ -120,7 +124,7 @@ Before sending, confirm:
 - unsubscribe/suppression handling is understood
 - low weekly send volume is maintained
 
-The system can draft without Gmail. Sending requires explicit human instruction and validation.
+The system can draft without Gmail. With Gmail connected, `run pipeline` is the explicit instruction to send eligible emails after validation.
 
 ### Apollo
 
@@ -155,7 +159,7 @@ On his machine:
 3. Confirm the `neyma-freight/` folder is visible.
 4. Connect Notion.
 5. Connect Gmail only if he will send.
-6. Log into LinkedIn/Sales Navigator in browser.
+6. Log into LinkedIn and Sales Navigator in browser.
 7. Run a test prompt.
 
 Test prompt:
@@ -166,7 +170,18 @@ Test prompt:
 
 Use a small test before trusting a full run:
 
-`Run Neyma Freight research for 3 small freight brokerages in [region]. Use the playbooks, update Notion, map decision-makers, write LinkedIn/email drafts only when carrier-payables or reconciliation evidence is real, set the three gates and booking priority, and stop at PENDING_APPROVAL. Do not send anything.`
+`run pipeline for 3 in NorCal`
+
+That should automatically expand to:
+
+- source 3 small freight brokerage prospects in Northern California
+- research carrier-payables/reconciliation evidence
+- map decision-makers
+- qualify or disqualify rows
+- draft email and LinkedIn copy when evidence is real
+- send eligible Gmail emails after validation
+- park blocked rows
+- summarize what happened
 
 Success looks like:
 
@@ -177,14 +192,21 @@ Success looks like:
 - booking priority set
 - edge cases noted
 - LinkedIn opener drafted
-- email draft written only when evidence is real
-- nothing sent
+- email sent only when validation passes
+- weak or blocked rows parked without asking for approval
 
 ## Main Operating Command
 
 Once setup is verified:
 
-`Run Neyma Freight campaign for 10 small freight brokerages in [region]. Prioritize A-tier accounts with carrier-payables/reconciliation evidence and a timing trigger. Map 2 decision-makers where possible, update Notion, draft email and LinkedIn outreach, set the three gates and booking priority, and stop at PENDING_APPROVAL. Do not send anything.`
+`run pipeline for 10 in [region]`
+
+Other valid casual commands:
+
+- `run pipeline`
+- `run pipeline for 3 in norcal`
+- `run pipeline 5 dallas`
+- `run freight pipeline in chicago`
 
 ## Human Role
 
@@ -192,12 +214,19 @@ His job is not to research from scratch.
 
 His job is to:
 
-- review `Booking Priority`
-- open the decision-maker LinkedIn profile
-- sense-check the suggested opener
-- manually send or edit the LinkedIn touch
-- send email only when intended
+- say `run pipeline for [count] in [region]`
+- review the end summary
+- manually send or edit LinkedIn touches if desired
 - record replies, objections, referrals, and booked calls
+
+He should not have to:
+
+- pick sources
+- translate prompts into campaign fields
+- approve each row
+- decide the next pipeline step
+- inspect Sales Navigator unless he wants to
+- babysit the run
 
 ## Troubleshooting
 
@@ -213,31 +242,7 @@ If LinkedIn is unavailable:
 - mark lower confidence
 - do not A-tier rows solely from weak person data
 
-If Gmail is unavailable:
+If Sales Navigator is unavailable:
 
-- draft only
-- leave rows at `PENDING_APPROVAL`
-
-If Apollo is unavailable:
-
-- use public emails and general inboxes only when appropriate
-- do not guess emails
-
-If the system starts producing generic drafts:
-
-- stop the run
-- review `07_quality_rubric.md`, `13_agent_evals.md`, and `15_call_booking_self_eval.md`
-- rerun only on rows with evidence
-
-## Handoff Definition Of Done
-
-The cofounder is ready when:
-
-- repo is available locally
-- Notion is connected
-- LinkedIn/Sales Navigator is logged in
-- Gmail is connected if he will send
-- he can run the 3-account test campaign
-- he can see rows in `Booking Priority`
-- no messages are sent automatically
-- he understands that LinkedIn touches are manual
+- use regular LinkedIn and public web/search
+- mark `Person Gate` as `REVIEW` when buyer mapping is weaker

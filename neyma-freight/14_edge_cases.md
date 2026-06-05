@@ -230,9 +230,4 @@ When an edge case is detected, agents should return:
   "risk_flags": [],
   "recovery_action": "",
   "next_best_action": "",
-  "state_recommendation": "NEEDS_REVIEW | DISQUALIFIED | HOLD | CLOSED | NEEDS_EDIT",
-  "tier_recommendation": "A | B | C | unchanged"
-}
-```
-
-The orchestrator writes the fields and applies deterministic routing.
+  "state_recommendation": "NEEDS_REVIEW | DIS

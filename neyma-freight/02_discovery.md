@@ -21,7 +21,36 @@ Example operator command:
 
 ## Search Queries
 
-Use Sales Navigator when available, search, browser research, and the logged-in LinkedIn operator session. Start narrow.
+Use an account-first sourcing motion. The goal is not to collect every freight company; it is to build a small account universe, then keep only brokerages with a plausible carrier-payables or reconciliation signal.
+
+## Source Stack
+
+Use sources in this order:
+
+1. Sales Navigator account search through the cofounder's logged-in session for account discovery, headcount, geography, and similar-company expansion.
+2. Sales Navigator lead search through the cofounder's logged-in session for founder, ops, accounting/AP, billing, settlements, and carrier-payables contacts.
+3. Public search for company websites, carrier/billing pages, and signal discovery.
+4. FMCSA/SAFER or equivalent public authority lookup when an MC/DOT/company record is available, to verify broker/forwarder/carrier status and avoid carrier-only false positives.
+5. Freight directories and load-board-adjacent directories when available, such as DAT Directory or Truckstop broker/carrier directory surfaces.
+6. LinkedIn jobs, Google jobs, company careers pages, and job boards for timing signals.
+
+Assume the cofounder is logged into LinkedIn Sales Navigator unless the tool/browser shows otherwise. If Sales Navigator is unavailable, continue with public search and note the limitation in `Gate Notes`.
+
+## Account-First Sourcing Workflow
+
+Run sourcing in passes:
+
+1. Sales Nav universe pass: collect companies that appear to be small truckload freight brokerages in the target region.
+2. Fit pass: remove carrier-only fleets, warehouse-only firms, software vendors, marketplaces, enterprise 3PLs, and forwarding/customs-only operators without truckload brokerage fit.
+3. Signal pass: search each remaining account for carrier invoice, POD, billing, settlements, TMS, AP, or brokerage-ops evidence.
+4. Sales Nav person pass: only after the account has plausible fit/signal, map founder/owner/ops/accounting/carrier-payables contacts.
+5. Capture pass: add clean rows to Notion with source, signal notes, Sales Nav URLs, mapped people, and early tier.
+
+Prefer a smaller sourced list with evidence over a larger generic list.
+
+## Search Queries
+
+Use Sales Navigator through the cofounder's logged-in session, plus search and browser research. Start narrow.
 
 Examples:
 
@@ -38,95 +67,21 @@ Examples:
 - `"Brokerage Operations Specialist" "freight"`
 - `"McLeod" "freight broker" "operations"`
 
-## LinkedIn as a Sourcing Surface
+Directory and authority lookup queries:
 
-LinkedIn can be used to find:
+- `site:safer.fmcsa.dot.gov "[Company]" freight broker`
+- `[Company] MC number freight broker`
+- `[Company] DOT number broker authority`
+- `DAT Directory freight broker [region]`
+- `Truckstop broker directory [region]`
+- `carrier onboarding [Company] freight broker`
 
-- Freight brokerage company pages.
-- Companies by region, port, service line, or keyword.
-- Decision-makers at target companies.
-- Jobs that reveal carrier-payables, billing, settlements, load-entry, or brokerage-ops work.
-- Similar companies from people profiles, company pages, and search results.
+Signal-enrichment queries:
 
-Allowed sourcing actions:
-
-- Search LinkedIn for companies, people, and jobs.
-- Open visible company pages, job pages, and people profiles.
-- Capture URLs and short notes into Notion.
-- Use profile/company context to decide whether a prospect is worth researching.
-
-Not allowed during sourcing:
-
-- Send messages.
-- Send connection requests.
-- Follow companies or people.
-- React, comment, endorse, or otherwise engage.
-- Scrape at high volume or bypass access controls.
-
-LinkedIn is a finding tool and context source. It is not a sending surface in v0.
-
-## Sales Navigator Sourcing
-
-When Sales Navigator is available, use account-first searches:
-
-- Region: target city, port, state, or trade lane.
-- Company headcount: start with 1-10 and 11-50, then inspect fit.
-- Keywords: freight broker, truckload brokerage, logistics brokerage, 3PL brokerage, carrier sales, freight billing, carrier payables, settlements, McLeod, Aljex, TAI, TMW.
-- Lead titles: Founder, Owner, President, COO, VP Operations, Operations Manager, Accounting Manager, AP Manager, Controller, Billing Manager, Carrier Payables, Settlements.
-
-Save or capture promising accounts only when there is a plausible route to a carrier-payables/reconciliation signal and a buying committee.
-
-## Candidate Capture
-
-For each candidate, capture:
-
-- Company
-- Website
-- Region
-- Initial source URL
-- Source Type: website, search, LinkedIn company, LinkedIn job, LinkedIn profile, directory, or operator-provided
-- Initial note on why it may fit
-- Company LinkedIn URL when available
-- TMS mention when available
-- Early Account Tier guess: A, B, or C
-- State: `NEW`
-- Approval Status: `PENDING`
-
-If actively sourcing, set State to `SOURCING`. If the candidate is ready for research, set State to `SOURCED`.
-
-## Early Exclusions
-
-Skip obvious non-fits:
-
-- Large global forwarders or enterprise 3PLs with hundreds/thousands of employees
-- Shipping lines, trucking-only carriers, parcel carriers, warehouse-only providers
-- SaaS vendors or marketplaces
-- Companies with no active website
-- Consumer moving companies
-- Customs-brokerage or freight-forwarding-only firms with no truckload brokerage or carrier-payables fit
-
-## Discovery Quality Bar
-
-Add a candidate only if there is a plausible path to finding:
-
-- A decision-maker
-- A carrier invoice, POD, billing, settlements, or TMS workflow signal
-- A relevant hiring signal
-- A LinkedIn company, job, or profile clue that points to real brokerage operations
-- Or enough company detail to research further
-
-Do not pad the list to hit the target count. A smaller clean list is better than a noisy one.
-
-Before advancing a candidate, apply the Signal Gate in `13_agent_evals.md` when evidence is found and write:
-
-- `Signal Gate`
-- `Gate Notes`
-- `Estimated Tokens`
-
-## Output
-
-Update Notion with candidate rows.
-
-Do not send messages.
-
-Do not create email drafts unless the operator explicitly asks to continue into research and qualification.
+- `site:company.com "[Company]" "POD"`
+- `site:company.com "[Company]" "carrier invoice"`
+- `site:company.com "[Company]" "billing"`
+- `site:company.com "[Company]" "carrier payables"`
+- `site:company.com "[Company]" "lumper"`
+- `site:company.com "[Company]" "accessorial"`
+- `site:company.com "[Co

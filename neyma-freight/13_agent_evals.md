@@ -254,16 +254,4 @@ Every handoff-ready row should have:
 Once per week, review:
 
 - HIGH priority rows that did not get replies.
-- REVIEW rows that could become HIGH with one enrichment step.
-- FAIL rows that reveal a bad sourcing pattern.
-- Replies, referrals, objections, and booked calls.
-
-Update `Learning Notes` with:
-
-- best signals
-- best titles
-- best regions
-- best reconciliation audit angles
-- objections by persona
-- copy patterns to reuse
-- copy patterns to ban
+- REVIEW rows that could become HI

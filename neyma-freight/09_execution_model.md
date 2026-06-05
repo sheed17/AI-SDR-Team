@@ -4,7 +4,7 @@
 
 Agents are agentic within a step. The flow between steps is deterministic.
 
-Within a step, an agent can reason, browse, search, use LinkedIn as a sourcing/research surface through the operator session, and choose its own tool path. This is where autonomy belongs.
+Within a step, an agent can reason, browse, search, use Sales Navigator through the cofounder's logged-in browser session for sourcing/buyer mapping, use LinkedIn as a research surface, and choose its own tool path. This is where autonomy belongs.
 
 Between steps, the orchestrator decides what runs next from the prospect state. Agents do not call each other. Agents do not decide pipeline order. Each agent does one job, returns structured output, and stops.
 
@@ -53,11 +53,11 @@ Canonical states:
 
 Allowed main path:
 
-`NEW -> SOURCING -> SOURCED -> RESEARCHING -> RESEARCHED -> QUALIFYING -> QUALIFIED -> DRAFTING -> DRAFTED -> PENDING_APPROVAL`
+`NEW -> SOURCING -> SOURCED -> RESEARCHING -> RESEARCHED -> QUALIFYING -> QUALIFIED -> DRAFTING -> DRAFTED -> SENDING -> SENT -> FOLLOWING_UP`
 
-Approval path:
+Draft-only or review path:
 
-`PENDING_APPROVAL -> SENDING -> SENT -> FOLLOWING_UP`
+`DRAFTED -> PENDING_APPROVAL`
 
 Optional review path:
 
@@ -65,7 +65,7 @@ Optional review path:
 
 Terminal or parked paths:
 
-- Any pre-approval step can route to `DISQUALIFIED`.
+- Any pre-send step can route to `DISQUALIFIED`.
 - Any step can route to `NEEDS_REVIEW`.
 - Tool or validation failures can route to `ERROR`.
 - Operator can route `PENDING_APPROVAL` to `REJECTED` or `HOLD`.
@@ -102,9 +102,9 @@ Suggested handler map:
 | `QUALIFYING` | Qualification | `QUALIFIED`, `DISQUALIFIED`, or `NEEDS_REVIEW` |
 | `QUALIFIED` | Outreach | `DRAFTING` |
 | `DRAFTING` | Outreach | `DRAFTED` |
-| `DRAFTED` | Approval prep | `PENDING_APPROVAL` |
-| `PENDING_APPROVAL` | Human review or explicit send command | `APPROVED`, `REJECTED`, `HOLD`, `NEEDS_EDIT`, or `SENDING` |
-| `APPROVED` | Sending layer | `SENDING` only after explicit operator send command |
+| `DRAFTED` | Send validation | `SENDING`, `NEEDS_REVIEW`, or `PENDING_APPROVAL` when explicitly draft-only |
+| `PENDING_APPROVAL` | Optional human review or explicit send command | `APPROVED`, `REJECTED`, `HOLD`, `NEEDS_EDIT`, or `SENDING` |
+| `APPROVED` | Sending layer | `SENDING` |
 | `SENT` | Follow-up | `FOLLOWING_UP` |
 | `FOLLOWING_UP` | Follow-up | `REPLIED`, `NO_REPLY`, `CLOSED`, or `NEEDS_REVIEW` |
 
@@ -128,8 +128,8 @@ These decisions belong to the orchestrator or operator, not the LLM:
 
 These decisions belong inside a step:
 
-- Which LinkedIn searches to run during sourcing.
-- Which LinkedIn company, job, or profile results are worth adding as candidates.
+- Which Sales Navigator account/lead searches to run during sourcing.
+- Which Sales Navigator, LinkedIn company, job, or profile results are worth adding as candidates.
 - Which pages to inspect during research.
 - Which visible LinkedIn profile details matter.
 - Whether Signal A or Signal B is strong.
@@ -139,28 +139,32 @@ These decisions belong inside a step:
 - How to phrase the email and LinkedIn draft.
 - How to reason about follow-up wording.
 
-## Review and Send Gate
+## Run Pipeline Send Gate
 
-`PENDING_APPROVAL` is the intentional human review stop for normal campaign runs.
+`run pipeline` is an execution command, not a request for a review queue.
 
-The loop must not cross this gate unless:
+When the operator says `run pipeline`, the worker should:
 
-- The operator explicitly asks to send a campaign, row, or exact message.
-- The row passes send validation.
+- Source accounts.
+- Research and qualify them.
+- Draft email and LinkedIn copy when evidence is real.
+- Send eligible Gmail emails automatically after validation.
+- Leave LinkedIn outreach as draft-only.
+- Park rows in `NEEDS_REVIEW`, `DISQUALIFIED`, or `ERROR` when gates fail or tools are unavailable.
 
-Notion approval fields are useful for review, but v0 sending is authorized by explicit operator command plus validation.
+`PENDING_APPROVAL` is used only when the operator explicitly asks for draft-only/review mode, Gmail is unavailable, or send validation cannot be completed but the row is otherwise useful.
 
-Email sending is authorized through Gmail after explicit send instruction.
+Email sending is authorized through Gmail by `run pipeline`, `send pipeline`, `send campaign`, or an exact send instruction, as long as the row passes send validation.
 
-LinkedIn drafts are prepared for manual send from the operator's main account. LinkedIn navigation is allowed for sourcing and research, but LinkedIn sending or engagement is not part of v0.
+LinkedIn drafts are prepared for manual send from the cofounder's/main account. Sales Navigator and LinkedIn navigation are allowed for sourcing and research, but LinkedIn sending or engagement is not part of v0.
 
-## LinkedIn Sourcing and Research Boundary
+## Sales Navigator and LinkedIn Boundary
 
-The logged-in LinkedIn alt/operator account is a sourcing and research surface only.
+The cofounder's logged-in Sales Navigator/LinkedIn session is a sourcing and research surface only.
 
 Allowed:
 
-- Search for companies, jobs, people, and regional/service-line clues.
+- Search Sales Navigator for accounts, leads, jobs, people, and regional/service-line clues.
 - Navigate company pages, people pages, jobs, and visible profiles.
 - Add candidate companies and decision-makers to Notion.
 - Capture role context and business-relevant profile notes.
@@ -181,7 +185,7 @@ The connected Gmail account may be used for operator-commanded email outreach.
 Allowed:
 
 - Create Gmail drafts for qualified prospects.
-- Send Gmail messages after the operator explicitly asks to send and the row has credible email, evidence, account tier A or strong B, reconciliation angle, and draft content.
+- Send Gmail messages during `run pipeline` after the row has credible email, evidence, account tier A or strong B, reconciliation angle, and draft content.
 - Update Notion to `SENT` after a successful send.
 
 Forbidden:
@@ -189,7 +193,7 @@ Forbidden:
 - Sending without explicit operator command.
 - Sending when evidence, credible email, account tier, reconciliation angle, or draft content is missing.
 - Sending LinkedIn messages through the browser.
-- Bulk sending without operator-selected rows and explicit send instruction.
+- Bulk sending rows that do not pass validation, exceed the campaign cap, or lack the current `run pipeline`/send command.
 
 ## Account De-Dup Lock
 
@@ -245,7 +249,7 @@ while run_is_active:
 
   prospects = find_rows_with_actionable_state()
   for prospect in prospects:
-    if prospect.state == PENDING_APPROVAL:
+    if prospect.state == PENDING_APPROVAL and run_mode != SEND_APPROVED_OR_PIPELINE:
       continue
     handler = registry[prospect.state]
     context = assemble_context(prospect, handler.playbook)
@@ -270,13 +274,3 @@ while run_is_active:
   update_campaign_counters()
   mark_done_when_campaign_has_no_actionable_rows()
 ```
-
-## Build Order
-
-1. Keep using Markdown playbooks and Notion manually for the first 20 prospects.
-2. Use `Neyma Freight Campaigns` to turn operator goals into run inputs.
-3. Add structured output templates for research, qualification, and outreach.
-4. Use `11_worker_checklist.md` as the Codex-run worker checklist that processes rows by state.
-5. Add Notion sync/polling only after the manual flow proves useful.
-6. Add deterministic glue such as YepCode or a simple script only when handoffs become repetitive.
-7. Use Gmail for explicit operator-commanded email sends; keep LinkedIn as draft-only until the operator deliberately changes that policy.
